@@ -13,9 +13,9 @@
   <meta name="keywords" content="PTM Pet Supplies, Doggy U-Wash, premium pet food, pet grooming, nutritional diets, frozen pet food, healthy pet treats, pet accessories, Marystown NL, Burin Peninsula, pet store near me" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <link rel="canonical" href="https://ptmpets.com/" />
-  <link rel="icon" href="/images/PTM-LOGOS/icon.ico" type="image/x-icon" />
-  <link rel="apple-touch-icon" href="/images/PTM-LOGOS/apple-touch-icon.png" />
-  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="icon" href="images/PTM-LOGOS/icon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="images/PTM-LOGOS/apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:title" content="PTM Pet Supplies & Doggy U-Wash | Premium Pet Care in Marystown, NL" />
@@ -107,11 +107,10 @@
   </script>
 
   <!-- Preload Critical Assets -->
-  <link rel="preload" href="/images/PTM-LOGOS/PTM_CUT.png" as="image" />
-  <link rel="preload" href="/styles.css" as="style" />
+  <link rel="preload" href="images/PTM-LOGOS/PTM_CUT.png" as="image" />
+  <link rel="preload" href="styles.css" as="style" />
   <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
   <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-  <link rel="dns-prefetch" href="https://maps.googleapis.com" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -119,11 +118,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
 
   <!-- CSS -->
-  <link rel="stylesheet" href="/styles.css" />
-  <link rel="stylesheet" href="/css/responsive.css" media="(max-width: 768px)" />
+  <link rel="stylesheet" href="styles.css" />
 
   <!-- Security Headers -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://ptmpets.com https://*.googleapis.com https://*.gstatic.com; style-src 'self' https://fonts.googleapis.com; script-src 'self' https://maps.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https://www.google.com;" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://ptmpets.com https://*.google.com https://*.gstatic.com; style-src 'self' https://fonts.googleapis.com; script-src 'self'; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https://www.google.com;" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
 
@@ -136,23 +134,6 @@
   <!-- Performance Optimization -->
   <link rel="alternate" href="https://ptmpets.com/rss.xml" type="application/rss+xml" title="PTM Pet Supplies Blog Feed" />
   <meta name="format-detection" content="telephone=no" />
-
-  <!-- Google Maps API Script -->
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
-  <script>
-    function initMap() {
-      const storeLocation = { lat: 47.1656, lng: -55.1483 };
-      const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 15,
-        center: storeLocation,
-      });
-      new google.maps.Marker({
-        position: storeLocation,
-        map: map,
-        title: "PTM Pet Supplies & Doggy U-Wash",
-      });
-    }
-  </script>
 </head>
 <body>
   <!-- COOKIE CONSENT -->
@@ -167,7 +148,7 @@
     <div class="header-content">
       <div class="logo-area">
         <a href="index.html" title="Back to Home">
-          <img src="/images/PTM-LOGOS/PTM_CUT.png" alt="PTM Pet Supplies Logo" class="logo-img" width="80" height="80" loading="lazy" />
+          <img src="images/PTM-LOGOS/PTM_CUT.png" alt="PTM Pet Supplies Logo" class="logo-img" width="80" height="80" loading="lazy" />
         </a>
         <div class="brand-text">
           <h1>PTM Pet Supplies</h1>
@@ -195,7 +176,7 @@
   <main>
     <!-- HERO SECTION -->
     <section id="home" class="hero-section">
-      <img src="/images/Store-front/PTM_FRONT.jpg" alt="Front view of PTM Pet Supplies" class="hero-image" width="1920" height="600" />
+      <img src="images/PTM_Store/PTM_FRONT.jpg" alt="Front view of PTM Pet Supplies" class="hero-image" width="1920" height="600" loading="lazy" />
       <div class="hero-overlay">
         <h2>We Love Your Pets</h2>
         <p>Like Our Own</p>
@@ -249,7 +230,15 @@
             <p><strong>Email:</strong> <a href="mailto:ptmpetsupplies2023@outlook.com">ptmpetsupplies2023@outlook.com</a></p>
           </div>
           <div class="map-container">
-            <div id="map" style="width: 100%; height: 250px;"></div>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2655.512678888888!2d-55.150487684314!3d47.165600079158!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4b6b7c7f7c7f7c7f%3A0x7c7f7c7f7c7f7c7f!2s192%2C%20194%20McGettigan%20Blvd%20%23194%2C%20Marystown%2C%20NL%20A0E%202M0%2C%20Canada!5e0!3m2!1sen!2sca!4v1631234567890"
+              width="100%"
+              height="250"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              title="PTM Pet Supplies Location">
+            </iframe>
           </div>
         </div>
       </div>
@@ -263,9 +252,9 @@
           Our staff is always happy to help!
         </p>
         <div class="doggywash-images">
-          <img src="/images/PTM_Store/Doggy_U_Wash_Room.jpg"
+          <img src="images/PTM_Store/Doggy_U_Wash_Room.jpg"
                alt="Self-serve Doggy Wash station"
-               style="max-width:500px; width:100%; height:auto; border-radius:20px;"
+               class="doggywash-img"
                loading="lazy" />
         </div>
       </div>
@@ -305,87 +294,87 @@
           <h3>Inside Our Store</h3>
           <div class="gallery-viewport slideshow-viewport">
             <div class="gallery-slide">
-              <img src="/images/PTM_Store/Cat_Supplies.jpg"
+              <img src="images/PTM_Store/Cat_Supplies.jpg"
                    alt="Cat supplies area" loading="lazy" />
             </div>
             <div class="gallery-slide">
-              <img src="/images/PTM_Store/Dog_Food_01.jpg"
+              <img src="images/PTM_Store/Dog_Food_01.jpg"
                    alt="Dog food selection 1" loading="lazy" />
             </div>
             <div class="gallery-slide">
-              <img src="/images/PTM_Store/Dog_Food_02.jpg"
+              <img src="images/PTM_Store/Dog_Food_02.jpg"
                    alt="Dog food selection 2" loading="lazy" />
             </div>
             <div class="gallery-slide">
-              <img src="/images/PTM_Store/Dog_Treats.jpg"
+              <img src="images/PTM_Store/Dog_Treats.jpg"
                    alt="Various dog treats" loading="lazy" />
             </div>
             <div class="gallery-slide">
-              <img src="/images/PTM_Store/Dog_Toys.jpg"
+              <img src="images/PTM_Store/Dog_Toys.jpg"
                    alt="Dog toys aisle" loading="lazy" />
             </div>
             <div class="gallery-slide">
-              <img src="/images/PTM_Store/Hamster_Bird.jpg"
+              <img src="images/PTM_Store/Hamster_Bird.jpg"
                    alt="Hamster and bird supplies" loading="lazy" />
             </div>
             <div class="gallery-slide">
-              <img src="/images/PTM_Store/Huggles.jpg"
+              <img src="images/PTM_Store/Huggles.jpg"
                    alt="Huggle brand supplies" loading="lazy" />
             </div>
             <div class="gallery-slide">
-              <img src="/images/PTM_Store/Leashes_Collars.jpg"
+              <img src="images/PTM_Store/Leashes_Collars.jpg"
                    alt="Leashes and collars" loading="lazy" />
             </div>
             <div class="gallery-slide">
-              <img src="/images/PTM_Store/Organic_Foods.jpg"
+              <img src="images/PTM_Store/Organic_Foods.jpg"
                    alt="Organic pet foods" loading="lazy" />
             </div>
             <div class="gallery-slide">
-              <img src="/images/PTM_Store/Paw_Thaw.jpg"
+              <img src="images/PTM_Store/Paw_Thaw.jpg"
                    alt="Paw Thaw products" loading="lazy" />
             </div>
             <div class="gallery-slide">
-              <img src="/images/PTM_Store/PTM_Fridge.jpg"
+              <img src="images/PTM_Store/PTM_Fridge.jpg"
                    alt="PTM fridge with fresh foods" loading="lazy" />
             </div>
             <div class="gallery-slide">
-              <img src="/images/PTM_Store/Purina_Pro_Plan.jpg"
+              <img src="images/PTM_Store/Purina_Pro_Plan.jpg"
                    alt="Purina Pro Plan" loading="lazy" />
             </div>
             <div class="gallery-slide">
-              <img src="/images/PTM_Store/Repashy_Diet.jpg"
+              <img src="images/PTM_Store/Repashy_Diet.jpg"
                    alt="Repashy diet" loading="lazy" />
             </div>
             <div class="gallery-slide">
-              <img src="/images/PTM_Store/Reptile_Food.jpg"
+              <img src="images/PTM_Store/Reptile_Food.jpg"
                    alt="Reptile food & supplies" loading="lazy" />
             </div>
             <div class="gallery-slide">
-              <img src="/images/PTM_Store/Rodent_Section.jpg"
+              <img src="images/PTM_Store/Rodent_Section.jpg"
                    alt="Rodent section" loading="lazy" />
             </div>
             <div class="gallery-slide">
-              <img src="/images/PTM_Store/Rodent_Substrate.jpg"
+              <img src="images/PTM_Store/Rodent_Substrate.jpg"
                    alt="Rodent substrate" loading="lazy" />
             </div>
             <div class="gallery-slide">
-              <img src="/images/PTM_Store/Royal_Canin.jpg"
+              <img src="images/PTM_Store/Royal_Canin.jpg"
                    alt="Royal Canin brand" loading="lazy" />
             </div>
             <div class="gallery-slide">
-              <img src="/images/PTM_Store/Shampoos_Grooming.jpg"
+              <img src="images/PTM_Store/Shampoos_Grooming.jpg"
                    alt="Shampoos and grooming" loading="lazy" />
             </div>
             <div class="gallery-slide">
-              <img src="/images/PTM_Store/Shelf_Misc_01.jpg"
+              <img src="images/PTM_Store/Shelf_Misc_01.jpg"
                    alt="Miscellaneous shelf items" loading="lazy" />
             </div>
             <div class="gallery-slide">
-              <img src="/images/PTM_Store/Ultra_Oils.jpg"
+              <img src="images/PTM_Store/Ultra_Oils.jpg"
                    alt="Ultra oils for pets" loading="lazy" />
             </div>
             <div class="gallery-slide">
-              <img src="/images/PTM_Store/Yappetizers.jpg"
+              <img src="images/PTM_Store/Yappetizers.jpg"
                    alt="Yappetizers brand treats" loading="lazy" />
             </div>
           </div>
@@ -399,34 +388,34 @@
         <p>Check out our lineup of trusted pet care brands.</p>
         <div class="brand-carousel" id="brandCarousel">
           <!-- All brand logos -->
-          <div class="brand-slide"><img src="/images/LOGOS/Aqueon_Logo.png" alt="Aqueon logo" loading="lazy" /></div>
-          <div class="brand-slide"><img src="/images/LOGOS/Big_Country_Raw_Logo.png" alt="Big Country Raw logo" loading="lazy" /></div>
-          <div class="brand-slide"><img src="/images/LOGOS/BUDZ_Logo.png" alt="BUDZ logo" loading="lazy" /></div>
-          <div class="brand-slide"><img src="/images/LOGOS/Catit_Logo.png" alt="Catit logo" loading="lazy" /></div>
-          <div class="brand-slide"><img src="/images/LOGOS/Crafty_Beasts_Logo.png" alt="Crafty Beasts logo" loading="lazy" /></div>
-          <div class="brand-slide"><img src="/images/LOGOS/Crumps_Naturals_Logo.png" alt="Crumps Naturals logo" loading="lazy" /></div>
-          <div class="brand-slide"><img src="/images/LOGOS/Fluckers_Logo.png" alt="Fluckers logo" loading="lazy" /></div>
-          <div class="brand-slide"><img src="/images/LOGOS/Fluval_Logo.png" alt="Fluval logo" loading="lazy" /></div>
-          <div class="brand-slide"><img src="/images/LOGOS/Go_Solutions_Logo.png" alt="Go Solutions logo" loading="lazy" /></div>
-          <div class="brand-slide"><img src="/images/LOGOS/Hikari_Logo.png" alt="Hikari logo" loading="lazy" /></div>
-          <div class="brand-slide"><img src="/images/LOGOS/Huggle_Hounds_Logo.png" alt="Huggle Hounds logo" loading="lazy" /></div>
-          <div class="brand-slide"><img src="/images/LOGOS/Inaba_Logo.png" alt="Inaba logo" loading="lazy" /></div>
-          <div class="brand-slide"><img src="/images/LOGOS/Kaytee_Logo.png" alt="Kaytee logo" loading="lazy" /></div>
-          <div class="brand-slide"><img src="/images/LOGOS/Kordon_Logo.png" alt="Kordon logo" loading="lazy" /></div>
-          <div class="brand-slide"><img src="/images/LOGOS/Living_World_Logo.png" alt="Living World logo" loading="lazy" /></div>
-          <div class="brand-slide"><img src="/images/LOGOS/Marina_Logo.png" alt="Marina logo" loading="lazy" /></div>
-          <div class="brand-slide"><img src="/images/LOGOS/Orijen_Logo.png" alt="Orijen logo" loading="lazy" /></div>
-          <div class="brand-slide"><img src="/images/LOGOS/Ox_bow_Logo.png" alt="Oxbow logo" loading="lazy" /></div>
-          <div class="brand-slide"><img src="/images/LOGOS/Pure_Bites_Logo.png" alt="Pure Bites logo" loading="lazy" /></div>
-          <div class="brand-slide"><img src="/images/LOGOS/Purina_Logo.png" alt="Purina logo" loading="lazy" /></div>
-          <div class="brand-slide"><img src="/images/LOGOS/Repashy_Logo.png" alt="Repashy logo" loading="lazy" /></div>
-          <div class="brand-slide"><img src="/images/LOGOS/San_Francisco_Brand_Logo.png" alt="San Francisco Brand logo" loading="lazy" /></div>
-          <div class="brand-slide"><img src="/images/LOGOS/Seachem_Logo.png" alt="Seachem logo" loading="lazy" /></div>
-          <div class="brand-slide"><img src="/images/LOGOS/Tetra_Logo.png" alt="Tetra logo" loading="lazy" /></div>
-          <div class="brand-slide"><img src="/images/LOGOS/Tiki_Cat_Logo.png" alt="Tiki Cat logo" loading="lazy" /></div>
-          <div class="brand-slide"><img src="/images/LOGOS/Zilla_Logo.png" alt="Zilla logo" loading="lazy" /></div>
-          <div class="brand-slide"><img src="/images/LOGOS/Zoo_Med_Logo.png" alt="Zoo Med logo" loading="lazy" /></div>
-          <div class="brand-slide"><img src="/images/LOGOS/ZuPreem_Logo.png" alt="ZuPreem logo" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/LOGOS/Aqueon_Logo.png" alt="Aqueon logo" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/LOGOS/Big_Country_Raw_Logo.png" alt="Big Country Raw logo" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/LOGOS/BUDZ_Logo.png" alt="BUDZ logo" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/LOGOS/Catit_Logo.png" alt="Catit logo" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/LOGOS/Crafty_Beasts_Logo.png" alt="Crafty Beasts logo" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/LOGOS/Crumps_Naturals_Logo.png" alt="Crumps Naturals logo" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/LOGOS/Fluckers_Logo.png" alt="Fluckers logo" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/LOGOS/Fluval_Logo.png" alt="Fluval logo" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/LOGOS/Go_Solutions_Logo.png" alt="Go Solutions logo" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/LOGOS/Hikari_Logo.png" alt="Hikari logo" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/LOGOS/Huggle_Hounds_Logo.png" alt="Huggle Hounds logo" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/LOGOS/Inaba_Logo.png" alt="Inaba logo" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/LOGOS/Kaytee_Logo.png" alt="Kaytee logo" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/LOGOS/Kordon_Logo.png" alt="Kordon logo" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/LOGOS/Living_World_Logo.png" alt="Living World logo" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/LOGOS/Marina_Logo.png" alt="Marina logo" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/LOGOS/Orijen_Logo.png" alt="Orijen logo" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/LOGOS/Ox_bow_Logo.png" alt="Oxbow logo" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/LOGOS/Pure_Bites_Logo.png" alt="Pure Bites logo" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/LOGOS/Purina_Logo.png" alt="Purina logo" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/LOGOS/Repashy_Logo.png" alt="Repashy logo" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/LOGOS/San_Francisco_Brand_Logo.png" alt="San Francisco Brand logo" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/LOGOS/Seachem_Logo.png" alt="Seachem logo" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/LOGOS/Tetra_Logo.png" alt="Tetra logo" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/LOGOS/Tiki_Cat_Logo.png" alt="Tiki Cat logo" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/LOGOS/Zilla_Logo.png" alt="Zilla logo" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/LOGOS/Zoo_Med_Logo.png" alt="Zoo Med logo" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/LOGOS/ZuPreem_Logo.png" alt="ZuPreem logo" loading="lazy" /></div>
         </div>
       </div>
     </section>
@@ -446,6 +435,6 @@
     </div>
   </footer>
   <!-- Main JS -->
-  <script src="/script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
