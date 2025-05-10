@@ -245,21 +245,22 @@ a:focus {
   left: 50%;
   transform: translate(-50%, -50%);
   background: rgba(0, 0, 0, 0.7);
-  padding: 2rem 3.5rem;
+  padding: 1.5rem 2rem;
   border-radius: 15px;
   box-shadow: 0 6px 20px var(--shadow);
   animation: fadeIn 1s ease-in-out;
+  text-align: center;
 }
 
 .hero-overlay h2 {
-  font-size: 3rem;
+  font-size: 2.2rem;
   color: var(--white);
   margin-bottom: 0.8rem;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
 }
 
 .hero-overlay p {
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   color: var(--accent);
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   font-weight: 600;
@@ -519,6 +520,38 @@ a:focus {
   user-select: none;
 }
 
+.carousel-prev,
+.carousel-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: var(--white);
+  border: none;
+  font-size: 2rem;
+  width: 50px; /* Equal width and height for circular shape */
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 3;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-prev {
+  left: 1rem;
+}
+
+.carousel-next {
+  right: 1rem;
+}
 /* Brands Section */
 .brands-section {
   padding: 4rem 1.5rem;
@@ -550,6 +583,11 @@ a:focus {
   scroll-behavior: smooth;
   padding: 1.5rem 0;
   scroll-snap-type: x mandatory;
+  cursor: grab;
+}
+
+.brand-carousel:active {
+  cursor: grabbing;
 }
 
 .brand-carousel::-webkit-scrollbar {
@@ -672,15 +710,15 @@ img {
 
 @media (max-width: 767px) {
   .hero-overlay {
-    padding: 1.5rem 2rem;
+    padding: 1rem 1.5rem;
   }
 
   .hero-overlay h2 {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
   }
 
   .hero-overlay p {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .gallery-slide img {
