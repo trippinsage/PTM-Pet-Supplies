@@ -1,85 +1,190 @@
-"use strict";
-
-// Initialize site functionality after DOM is fully loaded
-document.addEventListener("DOMContentLoaded", () => {
-
+document.addEventListener('DOMContentLoaded', () => {
   // Mobile Navigation Toggle
-  const hamburger = document.getElementById("hamburger");
-  const mobileNav = document.getElementById("mobileNav");
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
 
-  window.toggleMobileNav = function () {
-    if (!mobileNav || !hamburger) return;
-    const isOpen = mobileNav.classList.toggle("open");
-    hamburger.setAttribute("aria-expanded", isOpen);
-  };
-
-  if (hamburger && mobileNav) {
-    hamburger.addEventListener("click", toggleMobileNav);
-    // Close nav when clicking outside
-    document.addEventListener("click", (e) => {
-      if (!mobileNav.contains(e.target) && !hamburger.contains(e.target)) {
-        mobileNav.classList.remove("open");
-        hamburger.setAttribute("aria-expanded", "false");
-      }
-    });
-    // Enhance keyboard accessibility for nav links
-    mobileNav.querySelectorAll("a").forEach(link => {
-      link.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          link.click();
-        }
-      });
-    });
+  function toggleMobileNav() {
+    const isOpen = mobileNav.classList.toggle('open');
+    mobileNav.classList.toggle('hidden', !isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
   }
 
-  // Auto-Scroll Carousels for Testimonials and Brands
-  const carousels = [
-    { id: "brandCarousel", position: 0 },
-    { id: "testimonialCarousel", position: 0 }
-  ];
-  const scrollStep = 320;
-  const scrollInterval = 4000;
-  const userScrollTimeout = 5000;
+  hamburger.addEventListener('click', toggleMobileNav);
 
-  carousels.forEach(carousel => {
-    const element = document.getElementById(carousel.id);
-    if (!element) return;
-
-    let userScroll = false;
-    ["mousedown", "touchstart", "wheel", "focus"].forEach(evt => {
-      element.addEventListener(evt, () => {
-        userScroll = true;
-        setTimeout(() => { userScroll = false; }, userScrollTimeout);
-      });
-    });
-
-    setInterval(() => {
-      if (userScroll) return;
-      carousel.position += scrollStep;
-      if (carousel.position >= element.scrollWidth - element.clientWidth) {
-        carousel.position = 0;
+  // Smooth Scroll for Navigation Links
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+        toggleMobileNav();
       }
-      element.scrollTo({ left: carousel.position, behavior: "smooth" });
-    }, scrollInterval);
+    });
   });
 
-  // Fade Slideshow for Gallery
-  function initFadeSlideshow(containerId, intervalMs) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
-    const slides = container.querySelectorAll(".gallery-slide");
-    if (slides.length === 0) return;
+  // Handle Brand Link Clicks
+  document.querySelectorAll('[data-brand-link]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      console.log(`Attempting to navigate to: ${link.href}`);
+      window.open(link.href, '_blank');
+    });
+    link.addEventListener('touchstart', (e) => {
+      console.log(`Touchstart on brand link: ${link.href}`);
+    });
+    link.addEventListener('touchend', (e) => {
+      console.log(`Touchend on brand link: ${link.href}`);
+    });
+  });
 
-    let currentIndex = 0;
-    slides[currentIndex].classList.add("active");
+  // Prevent Double Tap Zoom (Exclude Links)
+  let lastTouchEnd = 0;
+  document.addEventListener('touchend', (event) => {
+    const now = new Date().getTime();
+    const isLink = event.target.closest('[data-brand-link]');
+    if (now - lastTouchEnd <= 300 && !isLink) {
+      console.log('Preventing double-tap zoom');
+      event.preventDefault();
+    }
+    lastTouchEnd = now;
+  }, { passive: false });
 
-    setInterval(() => {
-      slides[currentIndex].classList.remove("active");
-      currentIndex = (currentIndex + 1) % slides.length;
-      slides[currentIndex].classList.add("active");
-    }, intervalMs);
+  // Gallery Slideshow
+  const slides = document.querySelectorAll('.gallery-slide');
+  const prevButton = document.querySelector('.carousel-prev');
+  const nextButton = document.querySelector('.carousel-next');
+  let currentSlide = 0;
+  let slideInterval = null;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
+    });
   }
 
-  initFadeSlideshow("storeSlideshow", 3000);
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }
+
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+  }
+
+  function startSlideShow() {
+    slideInterval = setInterval(nextSlide, 5000);
+  }
+
+  function stopSlideShow() {
+    clearInterval(slideInterval);
+  }
+
+  showSlide(currentSlide);
+  startSlideShow();
+
+  prevButton.addEventListener('click', () => {
+    stopSlideShow();
+    prevSlide();
+    startSlideShow();
+  });
+
+  nextButton.addEventListener('click', () => {
+    stopSlideShow();
+    nextSlide();
+    startSlideShow();
+  });
+
+  document.querySelector('.gallery-carousel').addEventListener('mouseenter', stopSlideShow);
+  document.querySelector('.gallery-carousel').addEventListener('mouseleave', startSlideShow);
+
+  // Testimonial Carousel Auto-Scroll
+  const testimonialCarousel = document.getElementById('testimonialCarousel');
+  const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+  const dots = document.querySelectorAll('.carousel-dot');
+  let testimonialIndex = 0;
+  let testimonialInterval = null;
+
+  function showTestimonial(index) {
+    const slideWidth = testimonialSlides[0].offsetWidth + 32; // Include gap
+    testimonialCarousel.scrollTo({
+      left: index * slideWidth,
+      behavior: 'smooth'
+    });
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
+  }
+
+  function nextTestimonial() {
+    testimonialIndex = (testimonialIndex + 1) % testimonialSlides.length;
+    showTestimonial(testimonialIndex);
+  }
+
+  function startTestimonialScroll() {
+    testimonialInterval = setInterval(nextTestimonial, 6000);
+  }
+
+  function stopTestimonialScroll() {
+    clearInterval(testimonialInterval);
+  }
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      stopTestimonialScroll();
+      testimonialIndex = parseInt(dot.getAttribute('data-index'));
+      showTestimonial(testimonialIndex);
+      startTestimonialScroll();
+    });
+  });
+
+  startTestimonialScroll();
+  testimonialCarousel.addEventListener('mouseenter', stopTestimonialScroll);
+  testimonialCarousel.addEventListener('mouseleave', startTestimonialScroll);
+
+  // Brand Carousel Auto-Scroll
+  const brandCarousel = document.getElementById('brandCarousel');
+  const brandSlides = document.querySelectorAll('.brand-slide');
+  let brandIndex = 0;
+  let brandInterval = null;
+
+  function showBrand(index) {
+    const slideWidth = brandSlides[0].offsetWidth + 32; // Include gap
+    brandCarousel.scrollTo({
+      left: index * slideWidth,
+      behavior: 'smooth'
+    });
+  }
+
+  function nextBrand() {
+    brandIndex = (brandIndex + 1) % brandSlides.length;
+    showBrand(brandIndex);
+  }
+
+  function startBrandScroll() {
+    brandInterval = setInterval(nextBrand, 4000);
+  }
+
+  function stopBrandScroll() {
+    clearInterval(brandInterval);
+  }
+
+  startBrandScroll();
+  brandCarousel.addEventListener('mouseenter', stopBrandScroll);
+  brandCarousel.addEventListener('mouseleave', startBrandScroll);
+
+  // Prevent Image Context Menu and Drag
+  document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('contextmenu', (e) => {
+      if (!e.target.closest('[data-brand-link]')) {
+        e.preventDefault();
+      }
+    });
+    img.addEventListener('dragstart', (e) => {
+      if (!e.target.closest('[data-brand-link]')) {
+        e.preventDefault();
+      }
+    });
+  });
 });
