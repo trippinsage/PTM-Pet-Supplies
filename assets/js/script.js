@@ -27,14 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Handle Brand Link Clicks
   document.querySelectorAll('[data-brand-link]').forEach(link => {
     link.addEventListener('click', (e) => {
-      console.log(`Attempting to navigate to: ${link.href}`);
+      e.preventDefault();
       window.open(link.href, '_blank');
-    });
-    link.addEventListener('touchstart', (e) => {
-      console.log(`Touchstart on brand link: ${link.href}`);
-    });
-    link.addEventListener('touchend', (e) => {
-      console.log(`Touchend on brand link: ${link.href}`);
     });
   });
 
@@ -44,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const now = new Date().getTime();
     const isLink = event.target.closest('[data-brand-link]');
     if (now - lastTouchEnd <= 300 && !isLink) {
-      console.log('Preventing double-tap zoom');
       event.preventDefault();
     }
     lastTouchEnd = now;
@@ -143,11 +136,14 @@ document.addEventListener('DOMContentLoaded', () => {
   testimonialCarousel.addEventListener('mouseenter', stopTestimonialScroll);
   testimonialCarousel.addEventListener('mouseleave', startTestimonialScroll);
 
-  // Brand Carousel Auto-Scroll
+  // Brand Carousel Auto-Scroll and Drag-to-Scroll
   const brandCarousel = document.getElementById('brandCarousel');
   const brandSlides = document.querySelectorAll('.brand-slide');
   let brandIndex = 0;
   let brandInterval = null;
+  let isDown = false;
+  let startX;
+  let scrollLeft;
 
   function showBrand(index) {
     const slideWidth = brandSlides[0].offsetWidth + 32; // Include gap
@@ -173,6 +169,32 @@ document.addEventListener('DOMContentLoaded', () => {
   startBrandScroll();
   brandCarousel.addEventListener('mouseenter', stopBrandScroll);
   brandCarousel.addEventListener('mouseleave', startBrandScroll);
+
+  // Drag-to-Scroll for Brand Carousel
+  brandCarousel.addEventListener('mousedown', (e) => {
+    isDown = true;
+    brandCarousel.classList.add('active');
+    startX = e.pageX - brandCarousel.offsetLeft;
+    scrollLeft = brandCarousel.scrollLeft;
+  });
+
+  brandCarousel.addEventListener('mouseleave', () => {
+    isDown = false;
+    brandCarousel.classList.remove('active');
+  });
+
+  brandCarousel.addEventListener('mouseup', () => {
+    isDown = false;
+    brandCarousel.classList.remove('active');
+  });
+
+  brandCarousel.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - brandCarousel.offsetLeft;
+    const walk = (x - startX) * 2; // Adjust scroll speed
+    brandCarousel.scrollLeft = scrollLeft - walk;
+  });
 
   // Prevent Image Context Menu and Drag
   document.querySelectorAll('img').forEach(img => {
