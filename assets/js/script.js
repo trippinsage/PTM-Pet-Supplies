@@ -1,183 +1,392 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // Utility: Debounce function to limit rapid event firing
-  const debounce = (func, wait) => {
-    let timeout;
-    return (...args) => {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => func.apply(this, args), wait);
-    };
-  };
-
-  // Loading Spinner: Hide after page load
-  const spinner = document.querySelector('.loading-spinner');
-  if (spinner) {
-    window.addEventListener('load', () => {
-      spinner.style.opacity = '0';
-      setTimeout(() => spinner.style.display = 'none', 300);
-    });
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="author" content="PTM Pet Supplies">
+  <meta name="theme-color" content="#e91e63">
+  <title>PTM Pet Supplies & Doggy U-Wash</title>
+  <meta name="description" content="Discover PTM Pet Supplies in Marystown, NL – your family-owned pet store for premium pet foods, safe toys, specialty feeders, and a convenient Doggy U-Wash. Serving the Burin Peninsula with top-tier pet care solutions.">
+  <meta name="keywords" content="PTM Pet Supplies, Doggy U-Wash, pet store Marystown NL, premium pet food, pet grooming, self-service pet wash, nutritional pet diets, frozen pet food, healthy pet treats, pet accessories, pet supplies Burin Peninsula, pet store near me, Marystown pet grooming, Burin, Grand Bank, Fortune, St. Lawrence, Lawn, Lamaline, Rushoon, Terrenceville, Garnish, Winterland, pet supplies Newfoundland">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://ptmpets.com/">
+  <link rel="icon" href="assets/img/branding/ptm-logos/favicon_io/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/img/branding/ptm-logos/favicon_io/apple-touch-icon.png">
+  <meta property="og:title" content="PTM Pet Supplies & Doggy U-Wash">
+  <meta property="og:description" content="Shop at PTM Pet Supplies for premium pet foods, grooming solutions, safe toys, and our unique Doggy U-Wash. Your trusted pet store in Marystown, NL, serving the Burin Peninsula.">
+  <meta property="og:url" content="https://ptmpets.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ptmpets.com/assets/img/branding/ptm-logos/ptm-front.jpg">
+  <meta property="og:image:alt" content="PTM Pet Supplies storefront in Marystown, NL">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="PTM Pet Supplies">
+  <meta property="og:locale" content="en_CA">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PTM Pet Supplies & Doggy U-Wash">
+  <meta name="twitter:description" content="Family-owned pet store in Marystown, NL offering premium nutrition, safe toys, and a stress-free Doggy U-Wash. Serving the Burin Peninsula.">
+  <meta name="twitter:image" content="https://ptmpets.com/assets/img/branding/ptm-logos/ptm-front.jpg">
+  <meta name="twitter:image:alt" content="PTM Pet Supplies storefront in Marystown, NL">
+  <meta name="twitter:site" content="@PTMPetSupplies">
+  <meta name="twitter:creator" content="@PTMPetSupplies">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "PetStore",
+    "name": "PTM Pet Supplies & Doggy U-Wash",
+    "image": "https://ptmpets.com/assets/img/branding/ptm-logos/ptm-cutout.png",
+    "@id": "https://ptmpets.com/#organization",
+    "url": "https://ptmpets.com/",
+    "telephone": "(709) 279-4527",
+    "email": "ptmpetsupplies2023@outlook.com",
+    "description": "Family-owned pet store in Marystown, NL offering premium pet food, SCF nutritional diets, grooming, safe toys, and a convenient Doggy U-Wash for the Burin Peninsula.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "192-194 McGettigan Blvd #194",
+      "addressLocality": "Marystown",
+      "addressRegion": "NL",
+      "postalCode": "A0E 2M0",
+      "addressCountry": "CA"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 47.1656,
+      "longitude": -55.1483
+    },
+    "areaServed": ["Burin Peninsula", "Marystown", "Burin", "Grand Bank", "Fortune", "St. Lawrence", "Lawn", "Lamaline", "Rushoon", "Terrenceville", "Garnish", "Winterland"],
+    "openingHoursSpecification": [
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"], "opens": "10:00", "closes": "18:30"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "10:00", "closes": "20:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "10:00", "closes": "18:30"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "12:00", "closes": "17:00"}
+    ],
+    "sameAs": [
+      "https://www.facebook.com/PTMPetSupplies",
+      "https://www.instagram.com/ptmpetsupplies",
+      "https://twitter.com/PTMPetSupplies"
+    ],
+    "priceRange": "$$",
+    "acceptsReservations": false
   }
-
-  // Hamburger Menu: Toggle mobile navigation
-  const hamburger = document.querySelector('#hamburger');
-  const mobileNav = document.querySelector('#mobileNav');
-  if (hamburger && mobileNav) {
-    hamburger.addEventListener('click', () => {
-      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
-      hamburger.classList.toggle('active');
-      mobileNav.classList.toggle('hidden');
-      hamburger.setAttribute('aria-expanded', String(!expanded));
-    });
-    mobileNav.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        mobileNav.classList.add('hidden');
-        hamburger.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
-
-  // Testimonial Carousel
-  const testimonialCarousel = document.querySelector('#testimonialCarousel');
-  const testimonialSlides = testimonialCarousel?.querySelectorAll('.testimonial-slide') || [];
-  const testimonialDots = document.querySelectorAll('.carousel-dot');
-  let currentTestimonial = 0;
-  let testimonialInterval;
-
-  const showTestimonial = index => {
-    if (index < 0 || index >= testimonialSlides.length) return;
-    testimonialSlides.forEach(slide => slide.classList.toggle('active', slide === testimonialSlides[index]));
-    testimonialDots.forEach(dot => dot.classList.toggle('active', dot === testimonialDots[index]));
-    currentTestimonial = index;
-  };
-
-  const startTestimonial = () => {
-    testimonialInterval = setInterval(() => showTestimonial((currentTestimonial + 1) % testimonialSlides.length), 5000);
-  };
-  const stopTestimonial = () => clearInterval(testimonialInterval);
-
-  if (testimonialSlides.length) {
-    showTestimonial(0);
-    startTestimonial();
-    testimonialDots.forEach((dot, i) => dot.addEventListener('click', () => { stopTestimonial(); showTestimonial(i); startTestimonial(); }));
-    testimonialCarousel.addEventListener('mouseenter', stopTestimonial);
-    testimonialCarousel.addEventListener('mouseleave', startTestimonial);
-    // Swipe
-    let startX = 0;
-    testimonialCarousel.addEventListener('touchstart', e => startX = e.changedTouches[0].screenX);
-    testimonialCarousel.addEventListener('touchend', debounce(e => {
-      const endX = e.changedTouches[0].screenX;
-      if (startX - endX > 75) { stopTestimonial(); showTestimonial((currentTestimonial + 1) % testimonialSlides.length); startTestimonial(); }
-      else if (endX - startX > 75) { stopTestimonial(); showTestimonial((currentTestimonial - 1 + testimonialSlides.length) % testimonialSlides.length); startTestimonial(); }
-    }, 100));
-    testimonialCarousel.setAttribute('tabindex', '0');
-    testimonialCarousel.addEventListener('keydown', e => {
-      if (e.key === 'ArrowRight') { stopTestimonial(); showTestimonial((currentTestimonial + 1) % testimonialSlides.length); startTestimonial(); }
-      if (e.key === 'ArrowLeft') { stopTestimonial(); showTestimonial((currentTestimonial - 1 + testimonialSlides.length) % testimonialSlides.length); startTestimonial(); }
-    });
-  }
-
-  // Gallery Carousel
-  const galleryCarousel = document.querySelector('#storeSlideshow');
-  const gallerySlides = galleryCarousel?.querySelectorAll('.gallery-slide') || [];
-  const prevBtn = galleryCarousel?.querySelector('.carousel-prev');
-  const nextBtn = galleryCarousel?.querySelector('.carousel-next');
-  let currentGallery = 0;
-  let galleryInterval;
-
-  const showGallery = i => {
-    if (i < 0 || i >= gallerySlides.length) return;
-    gallerySlides.forEach(slide => slide.classList.toggle('active', slide === gallerySlides[i]));
-    currentGallery = i;
-  };
-  const startGallery = () => galleryInterval = setInterval(() => showGallery((currentGallery + 1) % gallerySlides.length), 7000);
-  const stopGallery = () => clearInterval(galleryInterval);
-
-  if (gallerySlides.length) {
-    showGallery(0);
-    startGallery();
-    prevBtn?.addEventListener('click', () => { stopGallery(); showGallery((currentGallery - 1 + gallerySlides.length) % gallerySlides.length); startGallery(); });
-    nextBtn?.addEventListener('click', () => { stopGallery(); showGallery((currentGallery + 1) % gallerySlides.length); startGallery(); });
-    galleryCarousel.addEventListener('mouseenter', stopGallery);
-    galleryCarousel.addEventListener('mouseleave', startGallery);
-    // Swipe
-    let gStartX = 0;
-    galleryCarousel.addEventListener('touchstart', e => gStartX = e.changedTouches[0].screenX);
-    galleryCarousel.addEventListener('touchend', debounce(e => {
-      const gEndX = e.changedTouches[0].screenX;
-      if (gStartX - gEndX > 75) { stopGallery(); showGallery((currentGallery + 1) % gallerySlides.length); startGallery(); }
-      else if (gEndX - gStartX > 75) { stopGallery(); showGallery((currentGallery - 1 + gallerySlides.length) % gallerySlides.length); startGallery(); }
-    }, 100));
-    galleryCarousel.setAttribute('tabindex', '0');
-    galleryCarousel.addEventListener('keydown', e => {
-      if (e.key === 'ArrowRight') { stopGallery(); showGallery((currentGallery + 1) % gallerySlides.length); startGallery(); }
-      if (e.key === 'ArrowLeft') { stopGallery(); showGallery((currentGallery - 1 + gallerySlides.length) % gallerySlides.length); startGallery(); }
-    });
-    [prevBtn, nextBtn].forEach(btn => btn && btn.addEventListener('focus', stopGallery) && btn.addEventListener('blur', startGallery));
-  }
-
-  // Brand Carousel
-  const brandCarousel = document.querySelector('#brandCarousel');
-  if (brandCarousel) {
-    const slides = brandCarousel.querySelectorAll('.brand-slide');
-    brandCarousel.style.display = slides.length ? 'flex' : 'none';
-
-    let isDragging = false, startX = 0, scrollLeft = 0, velocity = 0, lastX = 0, lastTime = 0, raf;
-
-    const clamp = () => {
-      const max = brandCarousel.scrollWidth - brandCarousel.clientWidth;
-      brandCarousel.scrollLeft = Math.max(0, Math.min(brandCarousel.scrollLeft, max));
-    };
-    const momentum = () => {
-      if (Math.abs(velocity) < 0.5) { cancelAnimationFrame(raf); clamp(); return; }
-      brandCarousel.scrollLeft += velocity / 60;
-      velocity *= 0.92;
-      clamp();
-      raf = requestAnimationFrame(momentum);
-    };
-    const dragStart = e => {
-      isDragging = true;
-      startX = e.pageX ?? e.touches[0].pageX;
-      scrollLeft = brandCarousel.scrollLeft;
-      velocity = 0;
-      lastX = startX;
-      lastTime = Date.now();
-      cancelAnimationFrame(raf);
-      brandCarousel.style.scrollBehavior = 'auto';
-    };
-    const dragMove = e => {
-      if (!isDragging) return;
-      e.preventDefault();
-      const x = e.pageX ?? e.touches[0].pageX;
-      const walk = (x - startX) * 1.5;
-      brandCarousel.scrollLeft = scrollLeft - walk;
-      const now = Date.now();
-      const dx = x - lastX, dt = (now - lastTime) / 1000;
-      if (dt) velocity = dx / dt;
-      lastX = x;
-      lastTime = now;
-      clamp();
-    };
-    const dragEnd = () => {
-      isDragging = false;
-      raf = requestAnimationFrame(momentum);
-      brandCarousel.style.scrollBehavior = '';
-    };
-    brandCarousel.addEventListener('mousedown', dragStart);
-    brandCarousel.addEventListener('touchstart', dragStart);
-    brandCarousel.addEventListener('mousemove', dragMove);
-    brandCarousel.addEventListener('touchmove', dragMove);
-    brandCarousel.addEventListener('mouseup', dragEnd);
-    brandCarousel.addEventListener('mouseleave', dragEnd);
-    brandCarousel.addEventListener('touchend', dragEnd);
-
-    // Keyboard navigation
-    brandCarousel.setAttribute('tabindex', '0');
-    brandCarousel.addEventListener('keydown', e => {
-      const step = slides[0]?.offsetWidth || 200;
-      if (e.key === 'ArrowRight') brandCarousel.scrollBy({ left: step, behavior: 'smooth' });
-      if (e.key === 'ArrowLeft') brandCarousel.scrollBy({ left: -step, behavior: 'smooth' });
-      if (e.key === 'Home') brandCarousel.scrollTo({ left: 0, behavior: 'smooth' });
-      if (e.key === 'End') brandCarousel.scrollTo({ left: brandCarousel.scrollWidth, behavior: 'smooth' });
-    });
-  }
-});
+  </script>
+  <link rel="preload" href="assets/img/branding/ptm-logos/ptm-cutout.png" as="image">
+  <link rel="preload" href="assets/css/styles.css" as="style">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://ptmpets.com https://*.google.com https://*.gstatic.com; style-src 'self' https://fonts.googleapis.com; script-src 'self'; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https://www.google.com;">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <meta name="geo.region" content="CA-NL">
+  <meta name="geo.placename" content="Marystown">
+  <meta name="geo.position" content="47.1656;-55.1483">
+  <meta name="ICBM" content="47.1656, -55.1483">
+  <meta name="format-detection" content="telephone=no">
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <div class="logo-area">
+        <a href="/" title="PTM Pet Supplies Home">
+          <img src="assets/img/branding/ptm-logos/ptm-cutout.png" alt="PTM Pet Supplies Logo" class="logo-img" width="90" height="90" loading="eager">
+        </a>
+        <div class="brand-text">
+          <h1>PTM Pet Supplies</h1>
+          <p>& Doggy U-Wash</p>
+        </div>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle Navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="mobile-nav hidden" id="mobileNav" aria-label="Main navigation">
+      <ul>
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#contact" class="nav-link">Hours & Location</a></li>
+        <li><a href="#doggywash" class="nav-link">Doggy U-Wash</a></li>
+        <li><a href="#testimonials" class="nav-link">Reviews</a></li>
+        <li><a href="#gallery" class="nav-link">Gallery</a></li>
+        <li><a href="#brands" class="nav-link">Brands</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="home" class="hero-section" aria-labelledby="hero-title">
+      <img src="assets/img/branding/ptm-logos/ptm-front.jpg" alt="Front view of PTM Pet Supplies store" class="hero-image" width="1920" height="600" loading="eager">
+      <div class="hero-overlay">
+        <h2 id="hero-title">We Love Your Pets</h2>
+        <p>Like Our Own</p>
+      </div>
+    </section>
+<section class="about-section" aria-labelledby="about-title">
+  <div class="about-container">
+    <h2 id="about-title">Welcome to PTM Pet Supplies</h2>
+    <p>Hello, pet lovers! We are your friendly, family-owned pet store in Marystown, NL, dedicated to helping your furry, feathery, or scaly friends thrive. From premium foods and safe, engaging toys to unique feeders, each item is carefully selected with love—because we consider your pets part of our family.</p>
+    <p>Stop by for our convenient Doggy U-Wash, browse our wide selection of quality products, and chat with our friendly team. We are proud to serve the Burin Peninsula with warm smiles!</p>
+  </div>
+</section>
+    <section id="contact" class="contact-section" aria-labelledby="contact-title">
+      <h2 id="contact-title">Hours & Location</h2>
+      <div class="contact-wrapper">
+        <div class="store-hours">
+          <h3>Our Hours</h3>
+          <table aria-label="Store hours">
+            <tbody>
+              <tr><td>Mon – Thu</td><td>10:00 AM – 6:30 PM</td></tr>
+              <tr><td>Friday</td><td>10:00 AM – 8:00 PM</td></tr>
+              <tr><td>Saturday</td><td>10:00 AM – 6:30 PM</td></tr>
+              <tr><td>Sunday</td><td>12:00 PM – 5:00 PM</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="map-and-info">
+          <div class="contact-info">
+            <p><strong>Address:</strong> 192-194 McGettigan Blvd #194, Marystown, NL A0E 2M0</p>
+            <p><strong>Phone:</strong> <a href="tel:+17092794527">(709) 279-4527</a></p>
+            <p><strong>Email:</strong> <a href="mailto:ptmpetsupplies2023@outlook.com">ptmpetsupplies2023@outlook.com</a></p>
+          </div>
+          <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3835.7557896420867!2d-55.14938009410096!3d47.17177934663062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4b727f7aa26d8ea1%3A0x1423dd0573c98c6a!2sPTM%20Pet%20Supplies!5e0!3m2!1sen!2sca!4v1746699575339!5m2!1sen!2sca" width="100%" height="300" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="PTM Pet Supplies Location"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="doggywash" class="doggywash-section" aria-labelledby="doggywash-title">
+      <div class="doggywash-content">
+        <h2 id="doggywash-title">Doggy U-Wash</h2>
+        <p>Make bath time a blast with our self-serve Doggy U-Wash! We’ve got premium shampoos, cool grooming tools, and a fun, stress-free vibe. Our friendly team is always here to lend a paw!</p>
+        <div class="doggywash-images">
+          <img src="assets/img/featured/misc/doggy-u-wash.jpg" alt="Self-serve Doggy U-Wash station at PTM Pet Supplies" class="doggywash-img" width="600" height="400" loading="lazy">
+        </div>
+      </div>
+    </section>
+    <section id="testimonials" class="testimonials-section" aria-labelledby="testimonials-title">
+      <h2 id="testimonials-title">Customer Reviews</h2>
+      <div class="testimonial-carousel" id="testimonialCarousel" role="region" aria-label="Customer testimonials carousel">
+        <div class="testimonial-slide" aria-label="Testimonial 1: PTM is my happy place">
+          <blockquote>“PTM is my happy place for top-notch pet food and the friendliest service. The Doggy U-Wash is a game-changer!”</blockquote>
+        </div>
+        <div class="testimonial-slide" aria-label="Testimonial 2: Big paws up for PTM">
+          <blockquote>“Big paws up for PTM! Frozen foods, yummy treats, and staff who know their stuff—what’s not to love?”</blockquote>
+        </div>
+        <div class="testimonial-slide" aria-label="Testimonial 3: Awesome selection">
+          <blockquote>“They’ve got everything for my cat and bird. Awesome selection and super welcoming vibe!”</blockquote>
+        </div>
+        <div class="testimonial-slide" aria-label="Testimonial 4: Aquarium thriving">
+          <blockquote>“Set up my aquarium with PTM’s help, and it’s thriving. Their fish section is pawsitively amazing!”</blockquote>
+        </div>
+        <div class="testimonial-slide" aria-label="Testimonial 5: Perfect diet">
+          <blockquote>“The staff helped me find the perfect diet for my picky eater. My dog’s never been happier!”</blockquote>
+        </div>
+        <div class="testimonial-slide" aria-label="Testimonial 6: Variety of toys">
+          <blockquote>“Love the variety of toys for my parrot. PTM makes every visit fun and exciting!”</blockquote>
+        </div>
+        <div class="testimonial-slide" aria-label="Testimonial 7: Easy Doggy U-Wash">
+          <blockquote>“The Doggy U-Wash is so easy to use, and my pup comes out sparkling clean every time!”</blockquote>
+        </div>
+        <div class="testimonial-slide" aria-label="Testimonial 8: Frozen raw food">
+          <blockquote>“PTM’s frozen raw food selection is top-tier. My cat’s coat is shinier than ever!”</blockquote>
+        </div>
+        <div class="testimonial-slide" aria-label="Testimonial 9: Reptile supplies">
+          <blockquote>“Great place for reptile supplies. My lizard’s habitat is perfect thanks to PTM!”</blockquote>
+        </div>
+        <div class="testimonial-slide" aria-label="Testimonial 10: Knowledgeable staff">
+          <blockquote>“The team is so knowledgeable about pet nutrition. They really care about our pets!”</blockquote>
+        </div>
+        <div class="testimonial-slide" aria-label="Testimonial 11: Handmade accessories">
+          <blockquote>“Found the cutest handmade pet accessories here. My kitten looks adorable!”</blockquote>
+        </div>
+        <div class="testimonial-slide" aria-label="Testimonial 12: Bird seed mixes">
+          <blockquote>“PTM’s bird seed mixes are a hit with my finches. Amazing quality!”</blockquote>
+        </div>
+        <div class="testimonial-slide" aria-label="Testimonial 13: Welcoming vibe">
+          <blockquote>“The store’s vibe is so welcoming. It’s like a second home for pet parents!”</blockquote>
+        </div>
+        <div class="testimonial-slide" aria-label="Testimonial 14: Hamster cage">
+          <blockquote>“My hamster’s new cage setup from PTM is fantastic. Highly recommend!”</blockquote>
+        </div>
+        <div class="testimonial-slide" aria-label="Testimonial 15: Local brands">
+          <blockquote>“Love how PTM supports local pet brands. Such a great community feel!”</blockquote>
+        </div>
+        <div class="testimonial-slide" aria-label="Testimonial 16: Grooming tools">
+          <blockquote>“The grooming tools at PTM make home grooming a breeze. Thanks for the great products!”</blockquote>
+        </div>
+      </div>
+      <div class="carousel-nav">
+        <button class="carousel-dot active" aria-label="Go to testimonial 1"></button>
+        <button class="carousel-dot" aria-label="Go to testimonial 2"></button>
+        <button class="carousel-dot" aria-label="Go to testimonial 3"></button>
+        <button class="carousel-dot" aria-label="Go to testimonial 4"></button>
+        <button class="carousel-dot" aria-label="Go to testimonial 5"></button>
+        <button class="carousel-dot" aria-label="Go to testimonial 6"></button>
+        <button class="carousel-dot" aria-label="Go to testimonial 7"></button>
+        <button class="carousel-dot" aria-label="Go to testimonial 8"></button>
+        <button class="carousel-dot" aria-label="Go to testimonial 9"></button>
+        <button class="carousel-dot" aria-label="Go to testimonial 10"></button>
+        <button class="carousel-dot" aria-label="Go to testimonial 11"></button>
+        <button class="carousel-dot" aria-label="Go to testimonial 12"></button>
+        <button class="carousel-dot" aria-label="Go to testimonial 13"></button>
+        <button class="carousel-dot" aria-label="Go to testimonial 14"></button>
+        <button class="carousel-dot" aria-label="Go to testimonial 15"></button>
+        <button class="carousel-dot" aria-label="Go to testimonial 16"></button>
+      </div>
+    </section>
+    <section id="gallery" class="gallery-section" aria-labelledby="gallery-title">
+      <div class="gallery-container">
+        <h2 id="gallery-title">Photo Gallery</h2>
+        <div class="gallery-carousel fade-carousel" id="storeSlideshow">
+          <div class="slideshow-viewport">
+            <div class="gallery-slide active" aria-label="Gallery image 1: Pet shampoos and grooming products">
+              <img src="assets/img/featured/misc/shampoos-grooming.jpg" alt="Pet shampoos and grooming products display at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+            <div class="gallery-slide" aria-label="Gallery image 2: Pet wearing a birthday hat">
+              <img src="assets/img/featured/ptm-special/birthday-boy.jpg" alt="Pet wearing a birthday hat at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+            <div class="gallery-slide" aria-label="Gallery image 3: Dog toys aisle">
+              <img src="assets/img/featured/dog/dog-toys-aisle.jpg" alt="Dog toys aisle display at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+            <div class="gallery-slide" aria-label="Gallery image 4: Pet named Cinder">
+              <img src="assets/img/featured/ptm-special/cinder.jpg" alt="Pet named Cinder at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+            <div class="gallery-slide" aria-label="Gallery image 5: Acana pet food display">
+              <img src="assets/img/featured/ptm-special/acana.jpg" alt="Acana pet food display at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+            <div class="gallery-slide" aria-label="Gallery image 6: Go! Solutions pet food display">
+              <img src="assets/img/featured/ptm-special/go-solutions.jpg" alt="Go! Solutions pet food display at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+            <div class="gallery-slide" aria-label="Gallery image 7: Organic dog food selection">
+              <img src="assets/img/featured/dog/organic-dog-food.jpg" alt="Organic dog food selection at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+            <div class="gallery-slide" aria-label="Gallery image 8: Pet named Athena">
+              <img src="assets/img/featured/ptm-special/athena.jpg" alt="Pet named Athena at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+            <div class="gallery-slide" aria-label="Gallery image 9: Cat supplies aisle">
+              <img src="assets/img/featured/cat/cat-supplies.jpg" alt="Cat supplies aisle at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+            <div class="gallery-slide" aria-label="Gallery image 10: Boreal pet food display">
+              <img src="assets/img/featured/ptm-special/boreal.jpg" alt="Boreal pet food display at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+            <div class="gallery-slide" aria-label="Gallery image 11: Pet named Kane">
+              <img src="assets/img/featured/ptm-special/kane.jpg" alt="Pet named Kane at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+            <div class="gallery-slide" aria-label="Gallery image 12: Additional dog treats display">
+              <img src="assets/img/featured/dog/dog-treats-two.jpg" alt="Additional dog treats display at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+            <div class="gallery-slide" aria-label="Gallery image 13: Maine Coon cat">
+              <img src="assets/img/featured/ptm-special/maine-coon.jpg" alt="Maine Coon cat at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+            <div class="gallery-slide" aria-label="Gallery image 14: Pets named Chloe and Charlie">
+              <img src="assets/img/featured/ptm-special/chloe-charlie.jpg" alt="Pets named Chloe and Charlie at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+            <div class="gallery-slide" aria-label="Gallery image 15: Aquarium supplies display">
+              <img src="assets/img/featured/fish/aquarium-supplies.jpg" alt="Aquarium supplies display at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+            <div class="gallery-slide" aria-label="Gallery image 16: Pet with a birthday cookie treat">
+              <img src="assets/img/featured/ptm-special/birthday-cookie.jpg" alt="Pet with a birthday cookie treat at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+            <div class="gallery-slide" aria-label="Gallery image 17: Featured dog food selection">
+              <img src="assets/img/featured/dog/dog-food-featured.jpg" alt="Featured dog food selection at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+            <div class="gallery-slide" aria-label="Gallery image 18: Pet named Stewie">
+              <img src="assets/img/featured/ptm-special/stewie.jpg" alt="Pet named Stewie at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+            <div class="gallery-slide" aria-label="Gallery image 19: Pet named Nikki">
+              <img src="assets/img/featured/ptm-special/nikki.jpg" alt="Pet named Nikki at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+            <div class="gallery-slide" aria-label="Gallery image 20: Living World small pet supplies">
+              <img src="assets/img/featured/misc/living-world-supplies.jpg" alt="Living World small pet supplies display at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+            <div class="gallery-slide" aria-label="Gallery image 21: Handmade pet products display">
+              <img src="assets/img/featured/ptm-special/handmade.jpg" alt="Handmade pet products display at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+            <div class="gallery-slide" aria-label="Gallery image 22: Purina Pro Plan cat food display">
+              <img src="assets/img/featured/cat/purina-pro-plan-cat.jpg" alt="Purina Pro Plan cat food display at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+            <div class="gallery-slide" aria-label="Gallery image 23: Birds eating">
+              <img src="assets/img/featured/ptm-special/birds-eating.jpg" alt="Birds eating at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+            <div class="gallery-slide" aria-label="Gallery image 24: Refrigerated pet foods display">
+              <img src="assets/img/featured/dog/cold-foods-ptm.jpg" alt="Refrigerated pet foods display at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+            <div class="gallery-slide" aria-label="Gallery image 25: Gerbil">
+              <img src="assets/img/featured/ptm-special/gerbil.jpg" alt="Gerbil at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+            <div class="gallery-slide" aria-label="Gallery image 26: Pet named Cupcake">
+              <img src="assets/img/featured/ptm-special/cupcake.jpg" alt="Pet named Cupcake at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+            <div class="gallery-slide" aria-label="Gallery image 27: Small pet substrate display">
+              <img src="assets/img/featured/misc/small-pet-substrate.jpg" alt="Small pet substrate display at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+            <div class="gallery-slide" aria-label="Gallery image 28: Boreal cat food display">
+              <img src="assets/img/featured/ptm-special/boreal-cat.jpg" alt="Boreal cat food display at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+            <div class="gallery-slide" aria-label="Gallery image 29: Dog treats aisle">
+              <img src="assets/img/featured/dog/dog-treat-asile.jpg" alt="Dog treats aisle display at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+            <div class="gallery-slide" aria-label="Gallery image 30: Pet named Old Mother">
+              <img src="assets/img/featured/ptm-special/old-mother.jpg" alt="Pet named Old Mother at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+            <div class="gallery-slide" aria-label="Gallery image 31: U-Wash pet grooming station">
+              <img src="assets/img/featured/ptm-special/u-wash-sheppard.jpg" alt="U-Wash pet grooming station at PTM Pet Supplies" width="700" height="450" loading="lazy">
+            </div>
+          </div>
+          <button class="carousel-prev" aria-label="Previous slide">❮</button>
+          <button class="carousel-next" aria-label="Next slide">❯</button>
+        </div>
+      </div>
+    </section>
+    <section id="brands" class="brands-section" aria-labelledby="brands-title">
+      <div class="brands-container">
+        <h2 id="brands-title">Our Awesome Brands</h2>
+        <p>Explore the top pet care brands we love and trust!</p>
+        <div class="brand-carousel" id="brandCarousel" role="region" aria-label="Brands carousel">
+          <div class="brand-slide" aria-label="Aqueon brand"><a href="https://www.aqueon.com" target="_blank" rel="noopener" aria-label="Visit Aqueon website" data-brand-link><img src="assets/img/branding/brand-logos/aqueon.png" alt="Aqueon logo" width="180" height="100" loading="lazy"></a></div>
+          <div class="brand-slide" aria-label="Big Country Raw brand"><a href="https://bigcountryraw.ca" target="_blank" rel="noopener" aria-label="Visit Big Country Raw website" data-brand-link><img src="assets/img/branding/brand-logos/big-country.png" alt="Big Country Raw logo" width="180" height="100" loading="lazy"></a></div>
+          <div class="brand-slide" aria-label="BUDZ brand"><a href="https://budzpetproducts.com" target="_blank" rel="noopener" aria-label="Visit BUDZ website" data-brand-link><img src="assets/img/branding/brand-logos/budz.png" alt="BUDZ logo" width="180" height="100" loading="lazy"></a></div>
+          <div class="brand-slide" aria-label="Catit brand"><a href="https://www.catit.com" target="_blank" rel="noopener" aria-label="Visit Catit website" data-brand-link><img src="assets/img/branding/brand-logos/catit.png" alt="Catit logo" width="180" height="100" loading="lazy"></a></div>
+          <div class="brand-slide" aria-label="Crafty Beasts brand"><a href="https://craftybeasts.ca" target="_blank" rel="noopener" aria-label="Visit Crafty Beasts website" data-brand-link><img src="assets/img/branding/brand-logos/crafty-beast.png" alt="Crafty Beasts logo" width="180" height="100" loading="lazy"></a></div>
+          <div class="brand-slide" aria-label="Crumps Naturals brand"><a href="https://www.crumpsnaturals.com" target="_blank" rel="noopener" aria-label="Visit Crumps Naturals website" data-brand-link><img src="assets/img/branding/brand-logos/crumps.png" alt="Crumps Naturals logo" width="180" height="100" loading="lazy"></a></div>
+          <div class="brand-slide" aria-label="Fluker's brand"><a href="https://www.flukerfarms.com" target="_blank" rel="noopener" aria-label="Visit Fluker's website" data-brand-link><img src="assets/img/branding/brand-logos/flukers.png" alt="Fluker's logo" width="180" height="100" loading="lazy"></a></div>
+          <div class="brand-slide" aria-label="Fluval brand"><a href="https://www.fluvalaquatics.com" target="_blank" rel="noopener" aria-label="Visit Fluval website" data-brand-link><img src="assets/img/branding/brand-logos/fluval.png" alt="Fluval logo" width="180" height="100" loading="lazy"></a></div>
+          <div class="brand-slide" aria-label="Go Solutions brand"><a href="https://www.petkind.com" target="_blank" rel="noopener" aria-label="Visit Go Solutions website" data-brand-link><img src="assets/img/branding/brand-logos/go.png" alt="Go Solutions logo" width="180" height="100" loading="lazy"></a></div>
+          <div class="brand-slide" aria-label="Hikari brand"><a href="https://www.hikariusa.com" target="_blank" rel="noopener" aria-label="Visit Hikari website" data-brand-link><img src="assets/img/branding/brand-logos/hikari.png" alt="Hikari logo" width="180" height="100" loading="lazy"></a></div>
+          <div class="brand-slide" aria-label="Huggle Hounds brand"><a href="https://www.hugglehounds.com" target="_blank" rel="noopener" aria-label="Visit Huggle Hounds website" data-brand-link><img src="assets/img/branding/brand-logos/huggle.png" alt="Huggle Hounds logo" width="180" height="100" loading="lazy"></a></div>
+          <div class="brand-slide" aria-label="Inaba brand"><a href="https://www.inabapetfood.com" target="_blank" rel="noopener" aria-label="Visit Inaba website" data-brand-link><img src="assets/img/branding/brand-logos/inaba.png" alt="Inaba logo" width="180" height="100" loading="lazy"></a></div>
+          <div class="brand-slide" aria-label="Kaytee brand"><a href="https://www.kaytee.com" target="_blank" rel="noopener" aria-label="Visit Kaytee website" data-brand-link><img src="assets/img/branding/brand-logos/kaytee.png" alt="Kaytee logo" width="180" height="100" loading="lazy"></a></div>
+          <div class="brand-slide" aria-label="Kordon brand"><a href="https://www.kordon.com" target="_blank" rel="noopener" aria-label="Visit Kordon website" data-brand-link><img src="assets/img/branding/brand-logos/kordon.png" alt="Kordon logo" width="180" height="100" loading="lazy"></a></div>
+          <div class="brand-slide" aria-label="Living World brand"><a href="https://www.hagen.com/living-world" target="_blank" rel="noopener" aria-label="Visit Living World website" data-brand-link><img src="assets/img/branding/brand-logos/living-world.png" alt="Living World logo" width="180" height="100" loading="lazy"></a></div>
+          <div class="brand-slide" aria-label="Marina brand"><a href="https://www.hagen.com/marina" target="_blank" rel="noopener" aria-label="Visit Marina website" data-brand-link><img src="assets/img/branding/brand-logos/marina.png" alt="Marina logo" width="180" height="100" loading="lazy"></a></div>
+          <div class="brand-slide" aria-label="Orijen brand"><a href="https://www.orijenpetfoods.com" target="_blank" rel="noopener" aria-label="Visit Orijen website" data-brand-link><img src="assets/img/branding/brand-logos/orijen.png" alt="Orijen logo" width="180" height="100" loading="lazy"></a></div>
+          <div class="brand-slide" aria-label="Oxbow brand"><a href="https://www.oxbowanimalhealth.com" target="_blank" rel="noopener" aria-label="Visit Oxbow website" data-brand-link><img src="assets/img/branding/brand-logos/oxbow.png" alt="Oxbow logo" width="180" height="100" loading="lazy"></a></div>
+          <div class="brand-slide" aria-label="Pure Bites brand"><a href="https://www.purebites.com" target="_blank" rel="noopener" aria-label="Visit Pure Bites website" data-brand-link><img src="assets/img/branding/brand-logos/pure-bites.png" alt="Pure Bites logo" width="180" height="100" loading="lazy"></a></div>
+          <div class="brand-slide" aria-label="Purina brand"><a href="https://www.purina.com" target="_blank" rel="noopener" aria-label="Visit Purina website" data-brand-link><img src="assets/img/branding/brand-logos/purina.png" alt="Purina logo" width="180" height="100" loading="lazy"></a></div>
+          <div class="brand-slide" aria-label="Repashy brand"><a href="https://www.repashy.com" target="_blank" rel="noopener" aria-label="Visit Repashy website" data-brand-link><img src="assets/img/branding/brand-logos/repashy.png" alt="Repashy logo" width="180" height="100" loading="lazy"></a></div>
+          <div class="brand-slide" aria-label="San Francisco Brand"><a href="https://www.sfbaybrand.com" target="_blank" rel="noopener" aria-label="Visit San Francisco Brand website" data-brand-link><img src="assets/img/branding/brand-logos/san-francisco.png" alt="San Francisco Brand logo" width="180" height="100" loading="lazy"></a></div>
+          <div class="brand-slide" aria-label="Seachem brand"><a href="https://www.seachem.com" target="_blank" rel="noopener" aria-label="Visit Seachem website" data-brand-link><img src="assets/img/branding/brand-logos/seachem.png" alt="Seachem logo" width="180" height="100" loading="lazy"></a></div>
+          <div class="brand-slide" aria-label="Tetra brand"><a href="https://www.tetra-fish.com" target="_blank" rel="noopener" aria-label="Visit Tetra website" data-brand-link><img src="assets/img/branding/brand-logos/tetra.png" alt="Tetra logo" width="180" height="100" loading="lazy"></a></div>
+          <div class="brand-slide" aria-label="Tiki Cat brand"><a href="https://www.tikipets.com" target="_blank" rel="noopener" aria-label="Visit Tiki Cat website" data-brand-link><img src="assets/img/branding/brand-logos/tikicat.png" alt="Tiki Cat logo" width="180" height="100" loading="lazy"></a></div>
+          <div class="brand-slide" aria-label="Zilla brand"><a href="https://www.zilla-rules.com" target="_blank" rel="noopener" aria-label="Visit Zilla website" data-brand-link><img src="assets/img/branding/brand-logos/zilla.png" alt="Zilla logo" width="180" height="100" loading="lazy"></a></div>
+          <div class="brand-slide" aria-label="Zoo Med brand"><a href="https://www.zoomed.com" target="_blank" rel="noopener" aria-label="Visit Zoo Med website" data-brand-link><img src="assets/img/branding/brand-logos/zoo-med.png" alt="Zoo Med logo" width="180" height="100" loading="lazy"></a></div>
+          <div class="brand-slide" aria-label="ZuPreem brand"><a href="https://www.zupreem.com" target="_blank" rel="noopener" aria-label="Visit ZuPreem website" data-brand-link><img src="assets/img/branding/brand-logos/zupreem.png" alt="ZuPreem logo" width="180" height="100" loading="lazy"></a></div>
+          <!-- Duplicates for smooth looping -->
+          <div class="brand-slide" aria-label="Aqueon brand"><a href="https://www.aqueon.com" target="_blank" rel="noopener" aria-label="Visit Aqueon website" data-brand-link><img src="assets/img/branding/brand-logos/aqueon.png" alt="Aqueon logo" width="180" height="100" loading="lazy"></a></div>
+          <div class="brand-slide" aria-label="Big Country Raw brand"><a href="https://bigcountryraw.ca" target="_blank" rel="noopener" aria-label="Visit Big Country Raw website" data-brand-link><img src="assets/img/branding/brand-logos/big-country.png" alt="Big Country Raw logo" width="180" height="100" loading="lazy"></a></div>
+          <div class="brand-slide" aria-label="BUDZ brand"><a href="https://budzpetproducts.com" target="_blank" rel="noopener" aria-label="Visit BUDZ website" data-brand-link><img src="assets/img/branding/brand-logos/budz.png" alt="BUDZ logo" width="180" height="100" loading="lazy"></a></div>
+          <div class="brand-slide" aria-label="Catit brand"><a href="https://www.catit.com" target="_blank" rel="noopener" aria-label="Visit Catit website" data-brand-link><img src="assets/img/branding/brand-logos/catit.png" alt="Catit logo" width="180" height="100" loading="lazy"></a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>© 2025 PTM Pet Supplies & Doggy U-Wash</p>
+      <p><a href="https://www.facebook.com/profile.php?id=61566655050481" target="_blank" rel="noopener" class="fb-like-button">Join Our Pet-Loving Community!</a></p>
+    </div>
+  </footer>
+  <script src="assets/js/script.js" defer></script>
+</body>
+</html>
