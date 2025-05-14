@@ -523,6 +523,7 @@ body {
 .brands-container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 10px; /* Add padding to avoid touching the edges */
 }
 
 .brand-carousel {
@@ -533,6 +534,7 @@ body {
   touch-action: pan-x;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  padding-bottom: 10px; /* Add padding to prevent images touching the bottom */
 }
 
 .brand-carousel::-webkit-scrollbar {
@@ -543,6 +545,7 @@ body {
   flex: 0 0 200px;
   margin: 0 10px;
   transition: transform 0.3s ease;
+  position: relative;
 }
 
 .brand-slide a {
@@ -559,6 +562,33 @@ body {
 .brand-slide img:hover,
 .brand-slide img:focus {
   transform: scale(1.1);
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 1024px) {
+  .brand-slide {
+    flex: 0 0 180px; /* Adjust slide width for smaller screens */
+    margin: 0 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .brands-section h2 {
+    font-size: 2rem; /* Slightly smaller font size on smaller screens */
+  }
+
+  .brands-section p {
+    font-size: 1rem; /* Adjust paragraph font size */
+  }
+
+  .brand-carousel {
+    padding: 0 5px; /* Add more padding for smaller screens */
+  }
+
+  .brand-slide {
+    flex: 0 0 150px; /* Make slides smaller on mobile */
+    margin: 0 5px; /* Reduce margin between slides */
+  }
 }
 
 /* Footer */
