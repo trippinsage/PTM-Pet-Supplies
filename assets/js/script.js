@@ -275,74 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
     brandCarousel.addEventListener('mouseleave', startBrand);
 
     // Drag-to-Scroll and Momentum
-    let isDragging = false,
-      startX = 0,
-      scrollLeft = 0,
-      velocity = 0,
-      lastX = 0,
-      lastTime = 0,
-      raf;
 
-    const clamp = () => {
-      const max = Math.max(0, brandCarousel.scrollWidth - brandCarousel.clientWidth);
-      brandCarousel.scrollLeft = Math.max(0, Math.min(brandCarousel.scrollLeft, max));
-    };
-
-    const momentum = () => {
-      if (Math.abs(velocity) < 0.5) {
-        cancelAnimationFrame(raf);
-        clamp();
-        const slideWidth = brandSlides[0].offsetWidth;
-        const gap = getGap();
-        const nearestIndex = Math.round(brandCarousel.scrollLeft / (slideWidth + gap * 2));
-        showBrand(nearestIndex);
-        return;
-      }
-      brandCarousel.scrollLeft += velocity / 60;
-      velocity *= 0.92;
-      clamp();
-      raf = requestAnimationFrame(momentum);
-    };
-
-    const dragStart = e => {
-      isDragging = true;
-      startX = e.pageX ?? e.touches[0].pageX;
-      scrollLeft = brandCarousel.scrollLeft;
-      velocity = 0;
-      lastX = startX;
-      lastTime = Date.now();
-      cancelAnimationFrame(raf);
-      brandCarousel.style.scrollBehavior = 'auto';
-    };
-
-    const dragMove = e => {
-      if (!isDragging) return;
-      e.preventDefault();
-      const x = e.pageX ?? e.touches[0].pageX;
-      const walk = (x - startX) * 1.5;
-      brandCarousel.scrollLeft = scrollLeft - walk;
-      const now = Date.now();
-      const dx = x - lastX,
-        dt = (now - lastTime) / 1000;
-      if (dt) velocity = dx / dt;
-      lastX = x;
-      lastTime = now;
-      clamp();
-    };
-
-    const dragEnd = () => {
-      isDragging = false;
-      raf = requestAnimationFrame(momentum);
-      brandCarousel.style.scrollBehavior = 'smooth';
-    };
-
-    brandCarousel.addEventListener('mousedown', dragStart);
-    brandCarousel.addEventListener('touchstart', dragStart);
-    brandCarousel.addEventListener('mousemove', dragMove);
-    brandCarousel.addEventListener('touchmove', dragMove);
-    brandCarousel.addEventListener('mouseup', dragEnd);
-    brandCarousel.addEventListener('mouseleave', dragEnd);
-    brandCarousel.addEventListener('touchend', dragEnd);
 
     // Keyboard Navigation
     brandCarousel.setAttribute('tabindex', '0');
