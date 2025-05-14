@@ -350,16 +350,28 @@ body {
   margin-bottom: 40px;
 }
 
-.testimonial-carousel {
+#testimonialCarousel {
   max-width: 800px;
   margin: 0 auto;
-  position: relative;
-  overflow: hidden;
-  touch-action: pan-y;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 10px 0;
+}
+
+#testimonialCarousel::-webkit-scrollbar {
+  display: none;
 }
 
 .testimonial-slide {
-  display: none;
+  flex: 0 0 300px;
+  margin: 0 10px;
+  scroll-snap-align: start;
   padding: 20px;
   background: #fff;
   border-radius: 8px;
@@ -368,7 +380,6 @@ body {
 }
 
 .testimonial-slide.active {
-  display: block;
   opacity: 1;
   transform: translateX(0);
 }
@@ -377,6 +388,14 @@ body {
   font-size: 1.2rem;
   color: #555;
   font-style: italic;
+}
+
+.testimonial-slide:first-child {
+  margin-left: 10px;
+}
+
+.testimonial-slide:last-child {
+  margin-right: 10px;
 }
 
 .carousel-nav {
@@ -427,7 +446,7 @@ body {
   margin: 0 auto;
 }
 
-.gallery-carousel {
+#storeSlideshow {
   position: relative;
   overflow: hidden;
   touch-action: pan-y;
@@ -505,6 +524,8 @@ body {
   padding: 60px 20px;
   background-color: #f9f9f9;
   text-align: center;
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
 .brands-section h2 {
@@ -523,33 +544,39 @@ body {
 .brands-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 10px; /* Add padding to avoid touching the edges */
+  padding: 0 15px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.brand-carousel {
+#brandCarousel {
   display: flex;
   overflow-x: auto;
+  scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   touch-action: pan-x;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  padding-bottom: 10px; /* Add padding to prevent images touching the bottom */
+  padding: 10px 0;
+  width: 100%;
 }
 
-.brand-carousel::-webkit-scrollbar {
+#brandCarousel::-webkit-scrollbar {
   display: none;
 }
 
 .brand-slide {
   flex: 0 0 200px;
   margin: 0 10px;
+  scroll-snap-align: start;
   transition: transform 0.3s ease;
   position: relative;
 }
 
 .brand-slide a {
   display: block;
+  text-decoration: none;
 }
 
 .brand-slide img {
@@ -564,30 +591,58 @@ body {
   transform: scale(1.1);
 }
 
-/* Media Queries for responsiveness */
+.brand-slide:first-child {
+  margin-left: 10px;
+}
+
+.brand-slide:last-child {
+  margin-right: 10px;
+}
+
+/* Media Queries for Brands Section */
 @media (max-width: 1024px) {
   .brand-slide {
-    flex: 0 0 180px; /* Adjust slide width for smaller screens */
+    flex: 0 0 180px;
     margin: 0 8px;
+  }
+
+  .brand-slide:first-child {
+    margin-left: 8px;
+  }
+
+  .brand-slide:last-child {
+    margin-right: 8px;
   }
 }
 
 @media (max-width: 768px) {
+  .brands-section {
+    padding: 40px 15px;
+  }
+
   .brands-section h2 {
-    font-size: 2rem; /* Slightly smaller font size on smaller screens */
+    font-size: 2rem;
   }
 
   .brands-section p {
-    font-size: 1rem; /* Adjust paragraph font size */
+    font-size: 1rem;
   }
 
-  .brand-carousel {
-    padding: 0 5px; /* Add more padding for smaller screens */
+  #brandCarousel {
+    padding: 5px 0;
   }
 
   .brand-slide {
-    flex: 0 0 150px; /* Make slides smaller on mobile */
-    margin: 0 5px; /* Reduce margin between slides */
+    flex: 0 0 150px;
+    margin: 0 5px;
+  }
+
+  .brand-slide:first-child {
+    margin-left: 5px;
+  }
+
+  .brand-slide:last-child {
+    margin-right: 5px;
   }
 }
 
@@ -616,7 +671,7 @@ body {
   color: #c2185b;
 }
 
-/* Responsive Styles */
+/* General Responsive Styles */
 @media (max-width: 767px) {
   .header-content {
     padding: 10px 15px;
@@ -670,8 +725,7 @@ body {
   .contact-section,
   .doggywash-section,
   .testimonials-section,
-  .gallery-section,
-  .brands-section {
+  .gallery-section {
     padding: 40px 15px;
   }
 
@@ -684,25 +738,4 @@ body {
     font-size: 1.5rem;
     padding: 8px 12px;
   }
-
-  .brand-slide {
-    flex: 0 0 150px;
-  }
-}
-
-@media (min-width: 768px) {
-  .brand-carousel {
-    justify-content: center;
-    animation: scrollBrands 30s linear infinite;
-  }
-
-  .brand-carousel:hover,
-  .brand-carousel:focus-within {
-    animation-play-state: paused;
-  }
-}
-
-@keyframes scrollBrands {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(calc(-200px * 28)); }
 }
