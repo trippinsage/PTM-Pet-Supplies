@@ -390,6 +390,7 @@ img {
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+  justify-content: center; /* Center content */
 }
 
 .store-hours {
@@ -436,6 +437,10 @@ img {
 .map-and-info {
   width: 100%;
   max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center children */
+  justify-content: center; /* Center vertically */
 }
 
 .contact-info p {
@@ -446,10 +451,11 @@ img {
 }
 
 .map-container {
-  margin-top: 2rem;
+  margin: 2rem auto 0; /* Center with top margin */
   position: relative;
   width: 100%;
-  padding-bottom: 75%; /* 4:3 aspect ratio for Google Maps */
+  max-width: 600px; /* Prevent over-stretching */
+  padding-bottom: 50%; /* Default aspect ratio */
   height: 0;
   overflow: hidden;
   background: var(--background-light);
@@ -459,8 +465,11 @@ img {
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
   height: 100%;
+  margin: 0 auto; /* Ensure iframe is centered */
   border: none;
   border-radius: var(--border-radius);
   z-index: 2;
@@ -834,6 +843,23 @@ img {
     width: 20px;
     height: 20px;
   }
+
+  .contact-wrapper {
+    padding: 0 0.5rem; /* Prevent edge clipping */
+  }
+
+  .map-and-info {
+    max-width: 100%; /* Fit within viewport */
+    padding: 0 0.5rem; /* Small padding for mobile */
+    display: flex;
+    justify-content: center; /* Center map */
+  }
+
+  .map-container {
+    padding-bottom: 100%; /* Square aspect ratio for mobile */
+    max-width: 100%; /* Prevent overflow */
+    margin: 0 auto; /* Center horizontally */
+  }
 }
 
 /* Tablet and Desktop (769px and up) */
@@ -852,10 +878,14 @@ img {
 
   .map-and-info {
     max-width: 600px;
+    display: flex;
+    justify-content: center; /* Center map */
   }
 
   .map-container {
     padding-bottom: 50%; /* Adjusted for larger screens */
+    max-width: 600px;
+    margin: 0 auto;
   }
 }
 
@@ -941,7 +971,13 @@ img {
   }
 
   .map-container {
-    padding-bottom: 100%; /* Adjusted for very small screens */
+    padding-bottom: 120%; /* Taller aspect ratio for very small screens */
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .map-and-info {
+    padding: 0 0.5rem;
   }
 }
 
