@@ -393,9 +393,9 @@ img {
 }
 
 .store-hours {
-  margin-bottom: 2rem;
   text-align: center;
   width: 100%;
+  max-width: 500px;
 }
 
 .store-hours h3 {
@@ -434,8 +434,8 @@ img {
 }
 
 .map-and-info {
-  max-width: 600px;
   width: 100%;
+  max-width: 600px;
 }
 
 .contact-info p {
@@ -447,13 +447,35 @@ img {
 
 .map-container {
   margin-top: 2rem;
+  position: relative;
+  width: 100%;
+  padding-bottom: 75%; /* 4:3 aspect ratio for Google Maps */
+  height: 0;
+  overflow: hidden;
+  background: var(--background-light);
 }
 
-.map-container iframes {
+.map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 300px;
+  height: 100%;
   border: none;
   border-radius: var(--border-radius);
+  z-index: 2;
+}
+
+.map-container::before {
+  content: 'Loading map...';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--text-medium);
+  font-size: clamp(0.9rem, 3vw, 1rem);
+  text-align: center;
+  z-index: 1;
 }
 
 /* Doggy U-Wash Section */
@@ -756,6 +778,10 @@ img {
     top: var(--header-height);
   }
 
+  .desktop-nav {
+    display: none;
+  }
+
   .hero-section {
     height: auto;
     min-height: 400px;
@@ -773,7 +799,7 @@ img {
   }
 
   .hero-overlay p {
-    font-size: clamp(0.9rem, 3 Wyatt, 0.95rem);
+    font-size: clamp(0.9rem, 3vw, 0.95rem);
   }
 
   .cta-button {
@@ -808,10 +834,6 @@ img {
     width: 20px;
     height: 20px;
   }
-
-  .map-container iframe {
-    height: 250px;
-  }
 }
 
 /* Tablet and Desktop (769px and up) */
@@ -824,23 +846,16 @@ img {
     display: block;
   }
 
-  .contact-wrapper {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-  }
-
   .store-hours {
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-    margin-bottom: 2rem;
+    max-width: 500px;
   }
 
   .map-and-info {
-    width: 100%;
     max-width: 600px;
+  }
+
+  .map-container {
+    padding-bottom: 50%; /* Adjusted for larger screens */
   }
 }
 
@@ -923,6 +938,10 @@ img {
   .carousel-control svg {
     width: 16px;
     height: 16px;
+  }
+
+  .map-container {
+    padding-bottom: 100%; /* Adjusted for very small screens */
   }
 }
 

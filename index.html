@@ -18,7 +18,7 @@
   <meta property="og:description" content="Shop premium pet foods, healthy toys, feeders, and enjoy our self-serve Doggy U-Wash. PTM Pet Supplies is your local source for trusted pet care in Marystown, Newfoundland.">
   <meta property="og:url" content="https://ptmpets.com/">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://ptmpets.com/assets/img/branding/ptm-logos/ptm-front.jpg">
+  <meta property="og:image" content="https://ptmpets.com/assets/img/branding/ptm-logos/ptm-front.webp">
   <meta property="og:image:alt" content="PTM Pet Supplies storefront in Marystown, NL">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -29,7 +29,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="PTM Pet Supplies & Doggy U-Wash | Marystown, NL">
   <meta name="twitter:description" content="Family-run pet supply shop with a self-serve dog wash station in Marystown, NL. Serving the Burin Peninsula with top-tier pet care and nutrition.">
-  <meta name="twitter:image" content="https://ptmpets.com/assets/img/branding/ptm-logos/ptm-front.jpg">
+  <meta name="twitter:image" content="https://ptmpets.com/assets/img/branding/ptm-logos/ptm-front.webp">
   <meta name="twitter:image:alt" content="PTM Pet Supplies storefront in Marystown, NL">
   <meta name="twitter:site" content="@PTMPetSupplies">
   <meta name="twitter:creator" content="@PTMPetSupplies">
@@ -40,7 +40,7 @@
     "@context": "https://schema.org",
     "@type": "PetStore",
     "name": "PTM Pet Supplies & Doggy U-Wash",
-    "image": "https://ptmpets.com/assets/img/branding/ptm-logos/ptm-cutout.png",
+    "image": "https://ptmpets.com/assets/img/branding/ptm-logos/ptm-cutout.webp",
     "@id": "https://ptmpets.com/#organization",
     "url": "https://ptmpets.com/",
     "telephone": "+17092794527",
@@ -89,12 +89,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
   <!-- Performance Optimization -->
-  <link rel="preload" href="assets/img/branding/ptm-logos/ptm-cutout.png" as="image">
+  <link rel="preload" href="assets/img/branding/ptm-logos/ptm-cutout.webp" as="image">
   <link rel="preload" href="assets/css/styles.css" as="style">
   <link rel="stylesheet" href="assets/css/styles.css">
 
   <!-- Security -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://ptmpets.com https://*.google.com https://*.gstatic.com; style-src 'self' https://fonts.googleapis.com; script-src 'self'; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https://www.google.com;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://ptmpets.com https://*.google.com https://*.gstatic.com; style-src 'self' https://fonts.googleapis.com; script-src 'self'; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https://www.google.com https://maps.google.com;">
 </head>
 
 <body itemscope itemtype="https://schema.org/PetStore">
@@ -105,7 +105,7 @@
     <div class="header-content">
       <div class="logo-area">
         <a href="/" title="PTM Pet Supplies Home">
-          <img src="assets/img/branding/ptm-logos/ptm-cutout.png" alt="PTM Pet Supplies Logo" class="logo-img" width="90" height="90" loading="eager">
+          <img src="assets/img/branding/ptm-logos/ptm-cutout.webp" alt="PTM Pet Supplies Logo" class="logo-img" width="90" height="90" loading="eager">
         </a>
         <div class="brand-text">
           <h1>PTM Pet Supplies</h1>
@@ -115,8 +115,18 @@
       <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#contact" class="nav-link">Hours & Location</a></li>
+          <li><a href="#doggywash" class="nav-link">Doggy U-Wash</a></li>
+          <li><a href="#testimonials" class="nav-link">Reviews</a></li>
+          <li><a href="#gallery" class="nav-link">Gallery</a></li>
+          <li><a href="#brands" class="nav-link">Brands</a></li>
+        </ul>
+      </nav>
     </div>
-    <nav class="mobile-nav" id="mobileNav" aria-label="Main navigation">
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
       <ul>
         <li><a href="#home" class="nav-link">Home</a></li>
         <li><a href="#contact" class="nav-link">Hours & Location</a></li>
@@ -129,7 +139,7 @@
   </header>
   <main>
     <section id="home" class="hero-section" aria-labelledby="hero-title">
-      <img src="assets/img/branding/ptm-logos/ptm-front.jpg" alt="Front view of PTM Pet Supplies store in Marystown, NL" class="hero-image" width="1920" height="600" loading="eager">
+      <img src="assets/img/branding/ptm-logos/ptm-front.webp" alt="Front view of PTM Pet Supplies store in Marystown, NL" class="hero-image" width="1920" height="600" loading="eager">
       <div class="hero-overlay">
         <h2 id="hero-title">We Love Your Pets</h2>
         <p>Like Our Own</p>
@@ -149,6 +159,12 @@
         <div class="store-hours">
           <h3>Our Hours</h3>
           <table aria-label="Store hours">
+            <thead>
+              <tr>
+                <th scope="col">Day</th>
+                <th scope="col">Hours</th>
+              </tr>
+            </thead>
             <tbody>
               <tr><td>Mon – Thu</td><td>10:00 AM – 6:30 PM</td></tr>
               <tr><td>Friday</td><td>10:00 AM – 8:00 PM</td></tr>
@@ -164,7 +180,9 @@
             <p><strong>Email:</strong> <a href="mailto:ptmpetsupplies2023@outlook.com">ptmpetsupplies2023@outlook.com</a></p>
           </div>
           <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5424.463292250219!2d-55.151316!3d47.172901!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4b727f7aa26d8ea1%3A0x1423dd0573c98c6a!2sPTM%20Pet%20Supplies!5e0!3m2!1sen!2sca!4v1747970730192!5m2!1sen!2sca" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5424.463292250219!2d-55.151316!3d47.172901!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4b727f7aa26d8ea1%3A0x1423dd0573c98c6a!2sPTM%20Pet%20Supplies!5e0!3m2!1sen!2sca!4v1747970730192!5m2!1sen!2sca" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-describedby="map-description"></iframe>
+            <p id="map-description" class="visually-hidden">Interactive map showing PTM Pet Supplies location at 192-194 McGettigan Blvd #194, Marystown, NL.</p>
+            <a href="https://www.google.com/maps/place/PTM+Pet+Supplies/@47.172901,-55.151316,15z/data=!4m6!3m5!1s0x4b727f7aa26d8ea1:0x1423dd0573c98c6a!8m2!3d47.172901!4d-55.151316!16s%2Fg%2F11y6q2z5p3" target="_blank" rel="noopener" class="visually-hidden">Open in Google Maps</a>
           </div>
         </div>
       </div>
@@ -173,7 +191,7 @@
       <div class="doggywash-content">
         <h2 id="doggywash-title">Doggy U-Wash</h2>
         <p>Make bath time a blast with our self-serve Doggy U-Wash, where you can enjoy premium shampoos and conditioners, high-quality grooming tools, a stress-free and fun environment, and support from our staff.</p>
-        <img src="assets/img/featured/misc/doggy-u-wash.jpg" alt="Self-serve Doggy U-Wash station at PTM Pet Supplies" class="doggywash-img" width="600" height="400" loading="lazy">
+        <img src="assets/img/featured/misc/doggy-u-wash.webp" alt="Self-serve Doggy U-Wash station at PTM Pet Supplies" class="doggywash-img" width="600" height="400" loading="lazy">
         <a href="#contact" class="cta-button">Book Your Wash</a>
       </div>
     </section>
@@ -242,100 +260,100 @@
         <div class="carousel" id="galleryCarousel" role="region" aria-label="Photo gallery carousel" tabindex="0">
           <div class="carousel-inner">
             <div class="carousel-slide" aria-hidden="false">
-              <img src="assets/img/featured/misc/shampoos-grooming.jpg" alt="Pet shampoos and grooming products display at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/misc/shampoos-grooming.webp" alt="Pet shampoos and grooming products display at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/ptm-special/birthday-boy.jpg" alt="Pet wearing a birthday hat at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/ptm-special/birthday-boy.webp" alt="Pet wearing a birthday hat at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/dog/dog-toys-aisle.jpg" alt="Dog toys aisle display at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/dog/dog-toys-aisle.webp" alt="Dog toys aisle display at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/ptm-special/cinder.jpg" alt="Pet named Cinder at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/ptm-special/cinder.webp" alt="Pet named Cinder at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/ptm-special/acana.jpg" alt="Acana pet food display at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/ptm-special/acana.webp" alt="Acana pet food display at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/ptm-special/go-solutions.jpg" alt="Go! Solutions pet food display at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/ptm-special/go-solutions.webp" alt="Go! Solutions pet food display at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/dog/organic-dog-food.jpg" alt="Organic dog food selection at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/dog/organic-dog-food.webp" alt="Organic dog food selection at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/ptm-special/athena.jpg" alt="Pet named Athena at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/ptm-special/athena.webp" alt="Pet named Athena at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/cat/cat-supplies.jpg" alt="Cat supplies aisle at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/cat/cat-supplies.webp" alt="Cat supplies aisle at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/ptm-special/boreal.jpg" alt="Boreal pet food display at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/ptm-special/boreal.webp" alt="Boreal pet food display at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/ptm-special/kane.jpg" alt="Pet named Kane at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/ptm-special/kane.webp" alt="Pet named Kane at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/dog/dog-treats-two.jpg" alt="Additional dog treats display at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/dog/dog-treats-two.webp" alt="Additional dog treats display at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/ptm-special/maine-coon.jpg" alt="Maine Coon cat at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/ptm-special/maine-coon.webp" alt="Maine Coon cat at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/ptm-special/chloe-charlie.jpg" alt="Pets named Chloe and Charlie at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/ptm-special/chloe-charlie.webp" alt="Pets named Chloe and Charlie at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/fish/aquarium-supplies.jpg" alt="Aquarium supplies display at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/fish/aquarium-supplies.webp" alt="Aquarium supplies display at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/ptm-special/birthday-cookie.jpg" alt="Pet with a birthday cookie treat at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/ptm-special/birthday-cookie.webp" alt="Pet with a birthday cookie treat at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/dog/dog-food-featured.jpg" alt="Featured dog food selection at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/dog/dog-food-featured.webp" alt="Featured dog food selection at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/ptm-special/stewie.jpg" alt="Pet named Stewie at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/ptm-special/stewie.webp" alt="Pet named Stewie at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/ptm-special/nikki.jpg" alt="Pet named Nikki at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/ptm-special/nikki.webp" alt="Pet named Nikki at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/misc/living-world-supplies.jpg" alt="Living World small pet supplies display at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/misc/living-world-supplies.webp" alt="Living World small pet supplies display at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/ptm-special/handmade.jpg" alt="Handmade pet products display at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/ptm-special/handmade.webp" alt="Handmade pet products display at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/cat/purina-pro-plan-cat.jpg" alt="Purina Pro Plan cat food display at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/cat/purina-pro-plan-cat.webp" alt="Purina Pro Plan cat food display at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/ptm-special/birds-eating.jpg" alt="Birds eating at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/ptm-special/birds-eating.webp" alt="Birds eating at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/dog/cold-foods-ptm.jpg" alt="Refrigerated pet foods display at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/dog/cold-foods-ptm.webp" alt="Refrigerated pet foods display at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/ptm-special/gerbil.jpg" alt="Gerbil at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/ptm-special/gerbil.webp" alt="Gerbil at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/ptm-special/cupcake.jpg" alt="Pet named Cupcake at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/ptm-special/cupcake.webp" alt="Pet named Cupcake at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/misc/small-pet-substrate.jpg" alt="Small pet substrate display at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/misc/small-pet-substrate.webp" alt="Small pet substrate display at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/ptm-special/boreal.jpg" alt="Boreal cat food display at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/ptm-special/boreal.webp" alt="Boreal cat food display at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/dog/dog-treat-asile.jpg" alt="Dog treats aisle display at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/dog/dog-treat-asile.webp" alt="Dog treats aisle display at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/ptm-special/old-mother.jpg" alt="Pet named Old Mother at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/ptm-special/old-mother.webp" alt="Pet named Old Mother at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/ptm-special/u-wash-sheppard.jpg" alt="U-Wash pet grooming station at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/ptm-special/u-wash-sheppard.webp" alt="U-Wash pet grooming station at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
             <div class="carousel-slide" aria-hidden="true">
-              <img src="assets/img/featured/ptm-special/moose.jpg" alt="Moose at PTM Pet Supplies" width="700" height="450" loading="lazy">
+              <img src="assets/img/featured/ptm-special/moose.webp" alt="Moose at PTM Pet Supplies" width="700" height="450" loading="lazy">
             </div>
           </div>
           <div class="carousel-dots" role="tablist"></div>
@@ -356,142 +374,142 @@
           <div class="brand-inner" role="list">
             <div class="brand-slide" role="listitem" aria-label="Aqueon brand">
               <a href="https://www.aqueon.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Aqueon website">
-                <img src="assets/img/branding/brand-logos/aqueon.png" alt="Aqueon logo" width="180" height="100" loading="lazy" decoding="async">
+                <img src="assets/img/branding/brand-logos/aqueon.webp" alt="Aqueon logo" width="180" height="100" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="brand-slide" role="listitem" aria-label="Big Country Raw brand">
               <a href="https://bigcountryraw.ca" target="_blank" rel="noopener noreferrer" aria-label="Visit Big Country Raw website">
-                <img src="assets/img/branding/brand-logos/big-country.png" alt="Big Country Raw logo" width="180" height="100" loading="lazy" decoding="async">
+                <img src="assets/img/branding/brand-logos/big-country.webp" alt="Big Country Raw logo" width="180" height="100" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="brand-slide" role="listitem" aria-label="BUDZ brand">
               <a href="https://budzpetproducts.com" target="_blank" rel="noopener noreferrer" aria-label="Visit BUDZ website">
-                <img src="assets/img/branding/brand-logos/budz.png" alt="BUDZ logo" width="180" height="100" loading="lazy" decoding="async">
+                <img src="assets/img/branding/brand-logos/budz.webp" alt="BUDZ logo" width="180" height="100" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="brand-slide" role="listitem" aria-label="Catit brand">
               <a href="https://www.catit.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Catit website">
-                <img src="assets/img/branding/brand-logos/catit.png" alt="Catit logo" width="180" height="100" loading="lazy" decoding="async">
+                <img src="assets/img/branding/brand-logos/catit.webp" alt="Catit logo" width="180" height="100" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="brand-slide" role="listitem" aria-label="Crafty Beasts brand">
               <a href="https://craftybeasts.ca" target="_blank" rel="noopener noreferrer" aria-label="Visit Crafty Beasts website">
-                <img src="assets/img/branding/brand-logos/crafty-beast.png" alt="Crafty Beasts logo" width="180" height="100" loading="lazy" decoding="async">
+                <img src="assets/img/branding/brand-logos/crafty-beast.webp" alt="Crafty Beasts logo" width="180" height="100" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="brand-slide" role="listitem" aria-label="Crumps Naturals brand">
               <a href="https://www.crumpsnaturals.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Crumps Naturals website">
-                <img src="assets/img/branding/brand-logos/crumps.png" alt="Crumps Naturals logo" width="180" height="100" loading="lazy" decoding="async">
+                <img src="assets/img/branding/brand-logos/crumps.webp" alt="Crumps Naturals logo" width="180" height="100" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="brand-slide" role="listitem" aria-label="Fluker's brand">
               <a href="https://www.flukerfarms.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Fluker's website">
-                <img src="assets/img/branding/brand-logos/flukers.png" alt="Fluker's logo" width="180" height="100" loading="lazy" decoding="async">
+                <img src="assets/img/branding/brand-logos/flukers.webp" alt="Fluker's logo" width="180" height="100" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="brand-slide" role="listitem" aria-label="Fluval brand">
               <a href="https://www.fluvalaquatics.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Fluval website">
-                <img src="assets/img/branding/brand-logos/fluval.png" alt="Fluval logo" width="180" height="100" loading="lazy" decoding="async">
+                <img src="assets/img/branding/brand-logos/fluval.webp" alt="Fluval logo" width="180" height="100" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="brand-slide" role="listitem" aria-label="Go Solutions brand">
               <a href="https://www.petkind.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Go Solutions website">
-                <img src="assets/img/branding/brand-logos/go.png" alt="Go Solutions logo" width="180" height="100" loading="lazy" decoding="async">
+                <img src="assets/img/branding/brand-logos/go.webp" alt="Go Solutions logo" width="180" height="100" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="brand-slide" role="listitem" aria-label="Hikari brand">
               <a href="https://www.hikariusa.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Hikari website">
-                <img src="assets/img/branding/brand-logos/hikari.png" alt="Hikari logo" width="180" height="100" loading="lazy" decoding="async">
+                <img src="assets/img/branding/brand-logos/hikari.webp" alt="Hikari logo" width="180" height="100" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="brand-slide" role="listitem" aria-label="Huggle Hounds brand">
               <a href="https://www.hugglehounds.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Huggle Hounds website">
-                <img src="assets/img/branding/brand-logos/huggle.png" alt="Huggle Hounds logo" width="180" height="100" loading="lazy" decoding="async">
+                <img src="assets/img/branding/brand-logos/huggle.webp" alt="Huggle Hounds logo" width="180" height="100" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="brand-slide" role="listitem" aria-label="Inaba brand">
               <a href="https://www.inabapetfood.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Inaba website">
-                <img src="assets/img/branding/brand-logos/inaba.png" alt="Inaba logo" width="180" height="100" loading="lazy" decoding="async">
+                <img src="assets/img/branding/brand-logos/inaba.webp" alt="Inaba logo" width="180" height="100" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="brand-slide" role="listitem" aria-label="Kaytee brand">
               <a href="https://www.kaytee.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Kaytee website">
-                <img src="assets/img/branding/brand-logos/kaytee.png" alt="Kaytee logo" width="180" height="100" loading="lazy" decoding="async">
+                <img src="assets/img/branding/brand-logos/kaytee.webp" alt="Kaytee logo" width="180" height="100" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="brand-slide" role="listitem" aria-label="Kordon brand">
               <a href="https://www.kordon.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Kordon website">
-                <img src="assets/img/branding/brand-logos/kordon.png" alt="Kordon logo" width="180" height="100" loading="lazy" decoding="async">
+                <img src="assets/img/branding/brand-logos/kordon.webp" alt="Kordon logo" width="180" height="100" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="brand-slide" role="listitem" aria-label="Living World brand">
               <a href="https://www.hagen.com/living-world" target="_blank" rel="noopener noreferrer" aria-label="Visit Living World website">
-                <img src="assets/img/branding/brand-logos/living-world.png" alt="Living World logo" width="180" height="100" loading="lazy" decoding="async">
+                <img src="assets/img/branding/brand-logos/living-world.webp" alt="Living World logo" width="180" height="100" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="brand-slide" role="listitem" aria-label="Marina brand">
               <a href="https://www.hagen.com/marina" target="_blank" rel="noopener noreferrer" aria-label="Visit Marina website">
-                <img src="assets/img/branding/brand-logos/marina.png" alt="Marina logo" width="180" height="100" loading="lazy" decoding="async">
+                <img src="assets/img/branding/brand-logos/marina.webp" alt="Marina logo" width="180" height="100" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="brand-slide" role="listitem" aria-label="Orijen brand">
               <a href="https://www.orijenpetfoods.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Orijen website">
-                <img src="assets/img/branding/brand-logos/orijen.png" alt="Orijen logo" width="180" height="100" loading="lazy" decoding="async">
+                <img src="assets/img/branding/brand-logos/orijen.webp" alt="Orijen logo" width="180" height="100" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="brand-slide" role="listitem" aria-label="Oxbow brand">
               <a href="https://www.oxbowanimalhealth.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Oxbow website">
-                <img src="assets/img/branding/brand-logos/oxbow.png" alt="Oxbow logo" width="180" height="100" loading="lazy" decoding="async">
+                <img src="assets/img/branding/brand-logos/oxbow.webp" alt="Oxbow logo" width="180" height="100" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="brand-slide" role="listitem" aria-label="Pure Bites brand">
               <a href="https://www.purebites.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Pure Bites website">
-                <img src="assets/img/branding/brand-logos/pure-bites.png" alt="Pure Bites logo" width="180" height="100" loading="lazy" decoding="async">
+                <img src="assets/img/branding/brand-logos/pure-bites.webp" alt="Pure Bites logo" width="180" height="100" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="brand-slide" role="listitem" aria-label="Purina brand">
               <a href="https://www.purina.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Purina website">
-                <img src="assets/img/branding/brand-logos/purina.png" alt="Purina logo" width="180" height="100" loading="lazy" decoding="async">
+                <img src="assets/img/branding/brand-logos/purina.webp" alt="Purina logo" width="180" height="100" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="brand-slide" role="listitem" aria-label="Repashy brand">
               <a href="https://www.repashy.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Repashy website">
-                <img src="assets/img/branding/brand-logos/repashy.png" alt="Repashy logo" width="180" height="100" loading="lazy" decoding="async">
+                <img src="assets/img/branding/brand-logos/repashy.webp" alt="Repashy logo" width="180" height="100" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="brand-slide" role="listitem" aria-label="San Francisco Bay Brand">
               <a href="https://www.sfbaybrand.com" target="_blank" rel="noopener noreferrer" aria-label="Visit San Francisco Bay Brand website">
-                <img src="assets/img/branding/brand-logos/san-francisco.png" alt="San Francisco Bay Brand logo" width="180" height="100" loading="lazy" decoding="async">
+                <img src="assets/img/branding/brand-logos/san-francisco.webp" alt="San Francisco Bay Brand logo" width="180" height="100" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="brand-slide" role="listitem" aria-label="Seachem brand">
               <a href="https://www.seachem.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Seachem website">
-                <img src="assets/img/branding/brand-logos/seachem.png" alt="Seachem logo" width="180" height="100" loading="lazy" decoding="async">
+                <img src="assets/img/branding/brand-logos/seachem.webp" alt="Seachem logo" width="180" height="100" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="brand-slide" role="listitem" aria-label="Tetra brand">
               <a href="https://www.tetra-fish.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Tetra website">
-                <img src="assets/img/branding/brand-logos/tetra.png" alt="Tetra logo" width="180" height="100" loading="lazy" decoding="async">
+                <img src="assets/img/branding/brand-logos/tetra.webp" alt="Tetra logo" width="180" height="100" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="brand-slide" role="listitem" aria-label="Tiki Cat brand">
               <a href="https://www.tikipets.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Tiki Cat website">
-                <img src="assets/img/branding/brand-logos/tikicat.png" alt="Tiki Cat logo" width="180" height="100" loading="lazy" decoding="async">
+                <img src="assets/img/branding/brand-logos/tikicat.webp" alt="Tiki Cat logo" width="180" height="100" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="brand-slide" role="listitem" aria-label="Zilla brand">
               <a href="https://www.zilla-rules.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Zilla website">
-                <img src="assets/img/branding/brand-logos/zilla.png" alt="Zilla logo" width="180" height="100" loading="lazy" decoding="async">
+                <img src="assets/img/branding/brand-logos/zilla.webp" alt="Zilla logo" width="180" height="100" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="brand-slide" role="listitem" aria-label="Zoo Med brand">
               <a href="https://www.zoomed.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Zoo Med website">
-                <img src="assets/img/branding/brand-logos/zoo-med.png" alt="Zoo Med logo" width="180" height="100" loading="lazy" decoding="async">
+                <img src="assets/img/branding/brand-logos/zoo-med.webp" alt="Zoo Med logo" width="180" height="100" loading="lazy" decoding="async">
               </a>
             </div>
             <div class="brand-slide" role="listitem" aria-label="ZuPreem brand">
               <a href="https://www.zupreem.com" target="_blank" rel="noopener noreferrer" aria-label="Visit ZuPreem website">
-                <img src="assets/img/branding/brand-logos/zupreem.png" alt="ZuPreem logo" width="180" height="100" loading="lazy" decoding="async">
+                <img src="assets/img/branding/brand-logos/zupreem.webp" alt="ZuPreem logo" width="180" height="100" loading="lazy" decoding="async">
               </a>
             </div>
           </div>
@@ -511,10 +529,7 @@
       <div class="footer-contact">
         <p><a href="tel:+17092794527">(709) 279-4527</a> | <a href="mailto:ptmpetsupplies2023@outlook.com">ptmpetsupplies2023@outlook.com</a></p>
       </div>
-      <div class="social-links">
-        <a href="https://www.facebook.com/profile.php?id=61566655050481" target="_blank" rel="noopener" aria-label="Visit PTM Pet Supplies on Facebook">Follow us!</a>
-      </div>
-      <a href="#contact" class="cta-button">Contact Us</a>
+      <a href="https://www.facebook.com/profile.php?id=61566655050481" class="cta-button">Follow Us</a>
     </div>
   </footer>
   <script src="assets/js/script.js" defer></script>
