@@ -229,7 +229,6 @@ img {
   font-size: clamp(1.05rem, 3vw, 1.2rem);
   color: var(--text-light);
   font-weight: 600;
-  text-decoration: none;
   transition: color var(--transition);
 }
 
@@ -388,7 +387,7 @@ img {
   max-width: var(--container-width);
   margin: 0 auto;
   display: flex;
-  flex-direction: column; /* Keep stacked layout for all sizes */
+  flex-direction: column;
   align-items: center;
   gap: 2rem;
 }
@@ -403,7 +402,7 @@ img {
   font-size: clamp(1.4rem, 4vw, 1.6rem);
   margin-bottom: 1.25rem;
   text-align: center;
-  color: #e91e63;
+  color: var(--primary-color);
 }
 
 .store-hours table {
@@ -450,7 +449,7 @@ img {
   margin-top: 2rem;
 }
 
-.map-container iframe {
+.map-container iframes {
   width: 100%;
   height: 300px;
   border: none;
@@ -621,45 +620,70 @@ img {
 }
 
 .brand-carousel {
+  position: relative;
   overflow: hidden;
+  touch-action: pan-x;
   will-change: transform;
+  outline: none;
 }
 
 .brand-inner {
   display: flex;
-  animation: brandSlide 40s linear infinite;
-}
-
-.brand-inner[style*="paused"] {
-  animation-play-state: paused;
+  transition: transform 0.5s ease-in-out;
 }
 
 .brand-slide {
   flex: 0 0 auto;
-  padding: 1rem;
-  transition: background 0.2s ease;
+  width: 180px;
+  margin: 0 10px;
+  opacity: 0.7;
+  transition: opacity var(--transition);
 }
 
-.brand-slide:focus-within {
-  background: rgba(233, 30, 99, 0.1);
-  outline: var(--focus-outline);
+.brand-slide:hover, .brand-slide:focus-within {
+  opacity: 1;
 }
 
 .brand-slide img {
-  width: 180px;
-  height: 100px;
+  width: 100%;
+  height: auto;
   object-fit: contain;
-  border-radius: 8px;
-  transition: transform var(--transition);
 }
 
-.brand-slide img:hover, .brand-slide img:focus {
-  transform: scale(1.1);
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: var(--text-light);
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity var(--transition);
 }
 
-@keyframes brandSlide {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+.brand-carousel:hover .carousel-control,
+.brand-carousel:focus-within .carousel-control {
+  opacity: 1;
+}
+
+.carousel-control:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.carousel-control.prev {
+  left: 0;
+}
+
+.carousel-control.next {
+  right: 0;
+}
+
+.carousel-control svg {
+  display: block;
 }
 
 /* Footer */
@@ -749,7 +773,7 @@ img {
   }
 
   .hero-overlay p {
-    font-size: clamp(0.9rem, 3vw, 0.95rem);
+    font-size: clamp(0.9rem, 3 Wyatt, 0.95rem);
   }
 
   .cta-button {
@@ -771,13 +795,18 @@ img {
     height: 300px;
   }
 
-  .brand-slide img {
+  .brand-slide {
     width: 120px;
-    height: 60px;
+    margin: 0 5px;
   }
 
-  .brand-inner {
-    animation-duration: 24s;
+  .carousel-control {
+    padding: 0.3rem;
+  }
+
+  .carousel-control svg {
+    width: 20px;
+    height: 20px;
   }
 
   .map-container iframe {
@@ -795,24 +824,24 @@ img {
     display: block;
   }
 
-.contact-wrapper {
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-}
+  .contact-wrapper {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
 
-.store-hours {
-  width: 100%;
-  max-width: 400px;
-  text-align: center;
-  margin-bottom: 2rem;
-}
+  .store-hours {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
 
-.map-and-info {
-  width: 100%;
-  max-width: 600px;
-}
+  .map-and-info {
+    width: 100%;
+    max-width: 600px;
+  }
 }
 
 /* Large Screens (992px and up) */
@@ -855,6 +884,10 @@ img {
   .carousel-slide blockquote {
     font-size: clamp(1.2rem, 3vw, 1.3rem);
   }
+
+  .brand-slide {
+    width: 180px;
+  }
 }
 
 /* Extra Small Screens (up to 400px) */
@@ -878,13 +911,18 @@ img {
     min-width: 100px;
   }
 
-  .brand-slide img {
+  .brand-slide {
     width: 100px;
-    height: 50px;
+    margin: 0 5px;
   }
 
-  .brand-inner {
-    animation-duration: 20s;
+  .carousel-control {
+    padding: 0.2rem;
+  }
+
+  .carousel-control svg {
+    width: 16px;
+    height: 16px;
   }
 }
 
@@ -979,15 +1017,12 @@ img {
   .brand-inner,
   .carousel-inner {
     animation: none;
+    transition: none;
   }
 
   .cta-button,
   .brand-slide img,
   .carousel-dot {
-    transition: none;
-  }
-
-  .carousel-inner {
     transition: none;
   }
 }
